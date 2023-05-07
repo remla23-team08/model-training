@@ -8,13 +8,16 @@ from sklearn.model_selection import train_test_split
 from src.preprocessing import preprocessing
 from src.load_data import load_mfcc
 from src.eval_functions import f1_m
+from src.visualisation import plot_history
 
 def prepare_dataset(json_path, test_size=0.25, validation_size=0.2):    
     # Load data.json
     X, y = load_mfcc(json_path)
 
+    X_proc, y_proc = preprocessing(X, y)
+    
     # Train/test and validation split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = test_size)
+    X_train, X_test, y_train, y_test = train_test_split(X_proc, y_proc, test_size = test_size)
     X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size = validation_size)
     X_train = X_train[..., np.newaxis]
     X_val = X_val[..., np.newaxis]
@@ -48,27 +51,6 @@ def CNN(input_shape):
     model.add(Dense(10, activation="softmax"))
 
     return model
-    
-    
-def plot_history(hist):
-    plt.figure(figsize=(20,15))
-    fig, axs = plt.subplots(2)
-    # accuracy subplot
-    axs[0].plot(hist.history["accuracy"], label="train accuracy")
-    axs[0].plot(hist.history["val_accuracy"], label="val accuracy")    
-    axs[0].set_ylabel("Accuracy")
-    axs[0].legend(loc="lower right")
-    axs[0].set_title("Accuracy eval")
-    
-    # Error subplot
-    axs[1].plot(hist.history["loss"], label="train error")
-    axs[1].plot(hist.history["val_loss"], label="val error")    
-    axs[1].set_ylabel("Error")
-    axs[1].set_xlabel("Epoch")
-    axs[1].legend(loc="upper right")
-    axs[1].set_title("Error eval")
-    
-    plt.show()
 
 
 def model_eval(model, X_test, y_test):
@@ -85,7 +67,7 @@ def main_classification(json_path, show_history=False):
     
     # create model
     model = CNN(input_shape)
-
+    
     # compile model
     adam = optimizers.Adam(lr=1e-4)
     model.compile(optimizer=adam,

@@ -1,8 +1,4 @@
-from src.load_data import load_mfcc
-import pandas as pd
-import json 
-
-def preprocessing(X, y, processedjson_path):
+def preprocessing(X, y):
     # TBD data processing
     X_proc = X
     y_proc = y
