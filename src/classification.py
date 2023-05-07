@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from keras import Sequential
 from keras.layers import *
 from keras import optimizers
@@ -7,7 +6,6 @@ from IPython.display import clear_output
 from sklearn.model_selection import train_test_split
 from src.preprocessing import preprocessing
 from src.load_data import load_mfcc
-from src.eval_functions import f1_m
 from src.visualisation import plot_history
 
 def prepare_dataset(json_path, test_size=0.25, validation_size=0.2):    
@@ -54,8 +52,8 @@ def CNN(input_shape):
 
 
 def model_eval(model, X_test, y_test):
-    test_error, test_accuracy, test_f1 = model.evaluate(X_test, y_test, verbose=1)
-    print(f"Test F1 score: {test_f1}")
+    test_error, test_accuracy = model.evaluate(X_test, y_test, verbose=1)
+    print(f"Test accuracy score: {test_accuracy}")
 
 
 def main_classification(json_path, show_history=False):
@@ -72,11 +70,11 @@ def main_classification(json_path, show_history=False):
     adam = optimizers.Adam(lr=1e-4)
     model.compile(optimizer=adam,
               loss="sparse_categorical_crossentropy",
-              metrics=["accuracy", f1_m])
+              metrics=["accuracy"])
 
     hist = model.fit(X_train, y_train,
                  validation_data = (X_val, y_val),
-                 epochs = 50,
+                 epochs = 40,
                  batch_size = 32)
     
     # Show error/accuracy history
