@@ -22,4 +22,5 @@ if vis:
 # Define and train classifier
 model = main_classification(json_path, show_history=True)
 
+# Save trained model
 model.save(r"res/model.h5")
