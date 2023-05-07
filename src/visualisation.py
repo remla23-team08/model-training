@@ -13,7 +13,6 @@ def visualise(dataset_path, json_path, songpath):
 
         
 def plot_history(hist):
-    plt.figure(figsize=(20,15))
     fig, axs = plt.subplots(2)
     # accuracy subplot
     axs[0].plot(hist.history["accuracy"], label="train accuracy")
