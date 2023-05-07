@@ -24,7 +24,7 @@ Any .wav file in the Data/ folder can be visualised, by means of plotting its wa
 Any preprocessing steps can be found in `preprocessing.py`. These are executed automatically with the execution of `main.py`.
 
 ### Compiling and evaluation of the model
-This pipeline uses a convolutional neural network based in keras. In `main.py`, the function main_classification has a parameter called "show_history". If True, a plot will be generated showing the training loss over time. The model is trained for 50 iterations. 
+This pipeline uses a convolutional neural network based in keras. In `main.py`, the function main_classification has a parameter called "show_history". If True, a plot will be generated showing the training loss over time. The model is trained for 40 iterations. 
 
 The model is evaluated using accuracy and F1 scores. The custom F1 evaluation metric can be found in `eval_functions.py`.
 
