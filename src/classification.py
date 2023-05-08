@@ -1,88 +1,39 @@
-import numpy as np
-from keras import Sequential
-from keras.layers import *
-from keras import optimizers
-from IPython.display import clear_output
 from sklearn.model_selection import train_test_split
-from src.preprocessing import preprocessing
-from src.load_data import load_mfcc
-from src.visualisation import plot_history
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import confusion_matrix, accuracy_score
+import joblib
 
-def prepare_dataset(json_path, test_size=0.25, validation_size=0.2):    
-    # Load data.json
-    X, y = load_mfcc(json_path)
+def prepare_dataset(X, y): 
+    """
+    Creates train/test split
+    """    
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 0)
+    return X_train, X_test, y_train, y_test
 
-    X_proc, y_proc = preprocessing(X, y)
+
+def model_eval(classifier, X_test, y_test):
+    """
+    Prints model evaluation metrics
+    """
+    y_pred = classifier.predict(X_test)
+    cm = confusion_matrix(y_test, y_pred)
+    print(cm, accuracy_score(y_test, y_pred))
+
+    return None
+
+
+def data_classification(X, y):
+    """
+    Define, fit and evaluate GaussianNB classifier
+    """
+    # split dataset
+    X_train, X_test, y_train, y_test = prepare_dataset(X, y)
+
+    # define and fit classifier
+    classifier = GaussianNB()
+    classifier.fit(X_train, y_train)
     
-    # Train/test and validation split
-    X_train, X_test, y_train, y_test = train_test_split(X_proc, y_proc, test_size = test_size)
-    X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size = validation_size)
-    X_train = X_train[..., np.newaxis]
-    X_val = X_val[..., np.newaxis]
-    X_test = X_test[..., np.newaxis]
-
-    return X_train, X_val, X_test, y_train, y_val, y_test
-
-
-def CNN(input_shape):
-    # Define CNN model
-    model = Sequential()
-    model.add(Conv2D(64, (3, 3), activation = "relu", input_shape = input_shape))
-    model.add(MaxPool2D((3, 3), strides=(2, 2), padding="same"))
-    model.add(BatchNormalization())
-
-    model.add(Conv2D(32, (3, 3), activation = "relu"))
-    model.add(MaxPool2D((3, 3), strides=(2, 2), padding="same"))
-    model.add(BatchNormalization())
-
-    model.add(Conv2D(32, (2, 2), activation = "relu"))
-    model.add(MaxPool2D((2, 2), strides=(2, 2), padding="same"))
-    model.add(BatchNormalization())
-
-    model.add(Conv2D(16, (1, 1), activation = "relu"))
-    model.add(MaxPool2D((1, 1), strides=(2, 2), padding="same"))
-    model.add(BatchNormalization())
-
-    model.add(Flatten())
-    model.add(Dense(64, activation="relu"))
-    model.add(Dropout(0.3))
-    model.add(Dense(10, activation="softmax"))
-
-    return model
-
-
-def model_eval(model, X_test, y_test):
-    test_error, test_accuracy = model.evaluate(X_test, y_test, verbose=1)
-    print(f"Test accuracy score: {test_accuracy}")
-
-
-def main_classification(json_path, show_history=False):
-    # get dataset from prepare_dataset
-    X_train, X_val, X_test, y_train, y_val, y_test = prepare_dataset(json_path)
-
-    # define input shape
-    input_shape = (X_train.shape[1],X_train.shape[2],X_train.shape[3])
-    
-    # create model
-    model = CNN(input_shape)
-    
-    # compile model
-    adam = optimizers.Adam(lr=1e-4)
-    model.compile(optimizer=adam,
-              loss="sparse_categorical_crossentropy",
-              metrics=["accuracy"])
-
-    hist = model.fit(X_train, y_train,
-                 validation_data = (X_val, y_val),
-                 epochs = 40,
-                 batch_size = 32)
-    
-    # Show error/accuracy history
-    if show_history:
-        plot_history(hist)
-    clear_output()
-
     # Model evaluation
-    model_eval(model, X_test, y_test)
+    model_eval(classifier, X_test, y_test)
 
-    return model
+    return classifier
