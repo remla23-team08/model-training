@@ -13,7 +13,7 @@ def data_preprocessing(dataset):
     all_stopwords.remove('not')
 
     corpus=[]
-    for i in range(0, 900):
+    for i in range(0, len(dataset)):
         review = re.sub('[^a-zA-Z]', ' ', dataset['Review'][i])
         review = review.lower()
         review = review.split()
