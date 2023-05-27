@@ -1,25 +1,40 @@
+#! /usr/bin/env
+
+"""
+Main execution script to manually execute the processing pipeline
+"""
+
+import os
 import joblib
 from load_data import load_data
 from preprocessing import data_preprocessing
-from classification import data_classification, model_eval
+from classification import data_classification
+from evaluation import model_eval
 
-# Define filepaths and load data
-dataset_path = r"restaurant-sentiment/a1_RestaurantReviews_HistoricDump.tsv"
-dataset = load_data(dataset_path)
+# Get the parent directory
+parent_dir = os.path.dirname(os.getcwd())
 
-# Perform preprocessing
-X, y = data_preprocessing(dataset)
+# Path to dataset
+DATASET_PATH = r"restaurant-sentiment/a1_RestaurantReviews_HistoricDump.tsv"
+global_path = os.path.join(parent_dir, DATASET_PATH)
 
-# Train and evaluate classifier, prints eval metrics
-model = data_classification(X, y)
+if __name__ == "__main__":
+    # Define filepaths and load data
+    dataset = load_data(global_path)
 
-model_eval(model, X, y)
-# new_path = r"restaurant-sentiment/a2_RestaurantReviews_FreshDump.tsv"
-# new_data = load_data(new_path)
+    # Perform preprocessing
+    X, y = data_preprocessing(dataset)
 
-# X_new, y_new = data_preprocessing(new_data)
+    # Train and evaluate classifier, prints eval metrics
+    model, X_test, y_test = data_classification(X, y)
 
-# model_eval(model, X_new, y_new)
+    model_eval(model, X_test, y_test)
+    # new_path = r"restaurant-sentiment/a2_RestaurantReviews_FreshDump.tsv"
+    # new_data = load_data(new_path)
 
-# Store model
-joblib.dump(model, 'data/models/c2_Classifier_Sentiment_Model') 
+    # X_new, y_new = data_preprocessing(new_data)
+
+    # model_eval(model, X_new, y_new)
+
+    # Store model
+    joblib.dump(model, os.path.join(parent_dir, 'data/models/c2_Classifier_Sentiment_Model'))
