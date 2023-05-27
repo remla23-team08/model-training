@@ -27,7 +27,7 @@ def data_preprocessing(dataset):
     y = dataset.iloc[:, -1].values
 
     # Saving BoW dictionary to later use in prediction
-    bow_path = 'res/c1_BoW_Sentiment_Model.pkl'
+    bow_path = 'data/models/c1_BoW_Sentiment_Model.pkl'
     pickle.dump(cv, open(bow_path, "wb"))
     
     return X, y

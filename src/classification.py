@@ -33,7 +33,4 @@ def data_classification(X, y):
     classifier = GaussianNB()
     classifier.fit(X_train, y_train)
     
-    # Model evaluation
-    model_eval(classifier, X_test, y_test)
-
     return classifier
