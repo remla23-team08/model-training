@@ -11,16 +11,15 @@ from preprocessing import data_preprocessing
 from classification import data_classification
 from evaluation import model_eval
 
-# Get the parent directory
-parent_dir = os.path.dirname(os.getcwd())
+# Get the root path of the current script
+root_path = os.path.dirname(os.path.abspath(__file__))
 
-# Path to dataset
-DATASET_PATH = r"restaurant-sentiment/a1_RestaurantReviews_HistoricDump.tsv"
-global_path = os.path.join(parent_dir, DATASET_PATH)
+# Specify the relative path to data.csv
+dataset_path = os.path.join(root_path, '..', 'restaurant-sentiment', 'a1_RestaurantReviews_HistoricDump.tsv')
 
 if __name__ == "__main__":
     # Define filepaths and load data
-    dataset = load_data(global_path)
+    dataset = load_data(dataset_path)
 
     # Perform preprocessing
     X, y = data_preprocessing(dataset)
@@ -37,4 +36,4 @@ if __name__ == "__main__":
     # model_eval(model, X_new, y_new)
 
     # Store model
-    joblib.dump(model, os.path.join(parent_dir, 'data/models/c2_Classifier_Sentiment_Model'))
+    joblib.dump(model, os.path.join(root_path, '..', 'data/models/c2_Classifier_Sentiment_Model'))

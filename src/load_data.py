@@ -8,5 +8,6 @@ import pandas as pd
 
 def load_data(dataset_path):
     """Function loading data from dataset_path into pandas dataset"""
-    dataset = pd.read_csv(dataset_path, delimiter = '\t', quoting = 3)
+    dataset = pd.read_csv(dataset_path, delimiter = '\t', quoting = 3, dtype={'Review': object, 'Liked': int})[:]
+
     return dataset

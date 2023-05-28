@@ -36,11 +36,11 @@ def data_preprocessing(dataset):
     X = count_vectoriser.fit_transform(corpus).toarray()
     y = dataset.iloc[:, -1].values
 
-    # Get the parent directory
-    parent_dir = os.path.dirname(os.getcwd())
+    # Get the root path of the current script, and bow path to save dictionary later
+    root_path = os.path.dirname(os.path.abspath(__file__))
+    bow_path = os.path.join(root_path, '..', 'data', 'models', 'c1_BoW_Sentiment_Model.pkl')
 
     # Saving BoW dictionary to later use in prediction
-    bow_path = os.path.join(parent_dir, r'data/models/c1_BoW_Sentiment_Model.pkl')
     with open(bow_path, "wb") as file:
         pickle.dump(count_vectoriser, file)
 
