@@ -2,7 +2,7 @@
 
 Report
 ======
-64 statements analysed.
+85 statements analysed.
 
 Statistics by type
 ------------------
@@ -10,13 +10,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |6      |6          |=          |100.00      |0.00     |
+|module   |5      |5          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|class    |0      |NC         |NC         |0           |0        |
+|class    |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|method   |0      |NC         |NC         |0           |0        |
+|method   |3      |3          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |5      |5          |=          |100.00      |0.00     |
+|function |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -25,18 +25,18 @@ External dependencies
 ---------------------
 ::
 
-    joblib (src.main)
+    joblib (src.preprocessing,src.training)
     nltk (src.preprocessing)
       \-corpus (src.preprocessing)
       \-stem 
         \-porter (src.preprocessing)
-    pandas (src.load_data)
+    pandas (src.preprocessing,src.training)
     sklearn 
       \-feature_extraction 
-      | \-text (src.preprocessing)
+      | \-text (src.training)
       \-metrics (src.evaluation)
-      \-model_selection (src.classification)
-      \-naive_bayes (src.classification)
+      \-model_selection (src.training)
+      \-naive_bayes (src.training)
 
 
 
@@ -46,13 +46,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |75     |46.30 |76       |-1.00      |
+|code      |94     |53.71 |94       |=          |
 +----------+-------+------+---------+-----------+
-|docstring |29     |17.90 |29       |=          |
+|docstring |20     |11.43 |20       |=          |
 +----------+-------+------+---------+-----------+
-|comment   |20     |12.35 |20       |=          |
+|comment   |23     |13.14 |23       |=          |
 +----------+-------+------+---------+-----------+
-|empty     |38     |23.46 |37       |+1.00      |
+|empty     |38     |21.71 |38       |=          |
 +----------+-------+------+---------+-----------+
 
 
