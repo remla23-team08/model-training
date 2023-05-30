@@ -22,3 +22,15 @@ Any preprocessing steps can be found in `preprocessing.py`. These are executed a
 
 ### Storing the trained model
 The trained model is stored in the `res/` folder.
+
+
+## Pylint & DSLinter
+Pylint and DSLinter have been used and configured to ensure the code quality. All configuration options can be found in `.pylintrc`. This configuration file is based on [this example from the DSLinter documentation](https://github.com/SERG-Delft/dslinter/blob/main/docs/pylint-configuration-examples/pylintrc-for-ml-projects/.pylintrc). Besides this, there are a few custom changes, such as adding the variable names `X_train`, `X_test` etc. to the list of accepted variable names by Pylint, as these variable names are commonly used in ML applications. The `init_hook` variable in `.pylintrc` is also set to the path of this directory, in order to ensure that all imports within the code do not result in a warning from Pylint.
+
+If you would like to manually verify the code quality, please run the following command:
+
+```bash
+pylint src
+```
+
+DSLinter is configured and will automatically run. This should return a perfect score of 10.00. A report summarising the findings can be found in the `data/reports` folder. 
