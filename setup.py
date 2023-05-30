@@ -9,8 +9,7 @@ requirements = [ ]
 test_requirements = [ ]
 
 setup(
-    author="Jelmer van der Saag",
-    author_email='jelmervandersaag@me.com',
+    author="Team 08",
     python_requires='>=3.6',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
@@ -22,7 +21,7 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
-    description="The model-training repository of Team 8 for the Release Engineering for Machine Learning (CS4295) course at the TU Delft.",
+    description="The model-training repository of Team 08 for the Release Engineering for Machine Learning (CS4295) course at the TU Delft.",
     install_requires=requirements,
     license="MIT license",
     include_package_data=True,
@@ -31,7 +30,7 @@ setup(
     packages=find_packages(include=['model_training', 'model_training.*']),
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/JvanderSaag/model_training',
+    url='https://github.com/remla23-team08/model-training',
     version='0.2.0',
     zip_safe=False,
 )
