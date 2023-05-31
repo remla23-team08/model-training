@@ -2,7 +2,7 @@
 
 Report
 ======
-85 statements analysed.
+109 statements analysed.
 
 Statistics by type
 ------------------
@@ -10,13 +10,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |5      |5          |=          |100.00      |0.00     |
+|module   |7      |7          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |3      |3          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |1      |1          |=          |100.00      |0.00     |
+|function |3      |3          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -25,7 +25,7 @@ External dependencies
 ---------------------
 ::
 
-    joblib (src.preprocessing,src.training)
+    joblib (src.main,src.preprocessing,src.training)
     nltk (src.preprocessing)
       \-corpus (src.preprocessing)
       \-stem 
@@ -35,8 +35,8 @@ External dependencies
       \-feature_extraction 
       | \-text (src.training)
       \-metrics (src.evaluation)
-      \-model_selection (src.training)
-      \-naive_bayes (src.training)
+      \-model_selection (src.classification,src.training)
+      \-naive_bayes (src.classification,src.training)
 
 
 
@@ -46,13 +46,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |94     |53.71 |94       |=          |
+|code      |122    |49.19 |122      |=          |
 +----------+-------+------+---------+-----------+
-|docstring |20     |11.43 |20       |=          |
+|docstring |32     |12.90 |32       |=          |
 +----------+-------+------+---------+-----------+
-|comment   |23     |13.14 |23       |=          |
+|comment   |37     |14.92 |37       |=          |
 +----------+-------+------+---------+-----------+
-|empty     |38     |21.71 |38       |=          |
+|empty     |57     |22.98 |57       |=          |
 +----------+-------+------+---------+-----------+
 
 
@@ -76,7 +76,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |0      |0        |0          |
+|convention |0      |1        |1          |
 +-----------+-------+---------+-----------+
 |refactor   |0      |0        |0          |
 +-----------+-------+---------+-----------+
@@ -97,6 +97,6 @@ Messages
 
 
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.91/10, +0.09)
 

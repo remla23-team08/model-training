@@ -41,7 +41,7 @@ class Preprocessing:
         review = [self.porter_stem.stem(word) for word in review if not word in set(self.all_stopwords)]
         review = ' '.join(review)
         return review
-        
+
 
 if __name__ == "__main__":
     # Specify the relative path to data tsv
