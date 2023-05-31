@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  preprocessing:
+    cmd: python src/preprocessing.py
+    deps:
+    - path: data/external/a1_RestaurantReviews_HistoricDump.tsv
+      md5: 102f1f4193e0bdebdd6cce7f13e0a839
+      size: 54686
+    - path: src/preprocessing.py
+      md5: b45d76ab50b20ccabfb50d591ee7ef02
+      size: 2034
+    outs:
+    - path: data/processed/corpus.joblib
+      md5: 243212bb05cce5e3fdc72bfd2826d329
+      size: 31612
+  load_data:
+    cmd: python src/load_data.py
+    deps:
+    - path: src/load_data.py
+      md5: e579b1f5296f89c5f22d8ac4af92e1c0
+      size: 913
+    outs:
+    - path: data/external/a1_RestaurantReviews_HistoricDump.tsv
+      md5: 102f1f4193e0bdebdd6cce7f13e0a839
+      size: 54686
+  training:
+    cmd: python src/training.py
+    deps:
+    - path: data/external/a1_RestaurantReviews_HistoricDump.tsv
+      md5: 102f1f4193e0bdebdd6cce7f13e0a839
+      size: 54686
+    - path: data/processed/corpus.joblib
+      md5: 243212bb05cce5e3fdc72bfd2826d329
+      size: 31612
+    - path: src/evaluation.py
+      md5: 96c08113733680243cbc537a93cc128d
+      size: 396
+    - path: src/training.py
+      md5: 81ddde09ae93959e83afb4bae0ddd90a
+      size: 2073
+    outs:
+    - path: data/models/c1_BoW_Sentiment_Model.pkl
+      md5: 47e4584e52d616cbb5af92f988648e27
+      size: 39823
+    - path: data/models/c2_Classifier_Sentiment_Model
+      md5: e6e6744062a1d370a585d15df7f45934
+      size: 46127
+    - path: reports/model_evaluation.txt
+      md5: 35b131f5c189995225c586a8ae7025d9
+      size: 67

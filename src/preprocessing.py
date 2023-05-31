@@ -1,33 +1,60 @@
+#! /usr/bin/env
+
+"""
+This file contains functions related to preprocessing of any data provided to the model
+"""
+
+import os
 import re
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
-from sklearn.feature_extraction.text import CountVectorizer
-import pickle
+import pandas as pd
+import joblib
 
-def data_preprocessing(dataset):
-    nltk.download('stopwords')
-    ps = PorterStemmer()
 
-    all_stopwords = stopwords.words('english')
-    all_stopwords.remove('not')
+class Preprocessing:
+    """Class to easily preprocess datasets"""
 
-    corpus=[]
-    for i in range(0, len(dataset)):
-        review = re.sub('[^a-zA-Z]', ' ', dataset['Review'][i])
+    def __init__(self):
+        """Initialize preprocess class"""
+        nltk.download('stopwords')
+        self.porter_stem = PorterStemmer()
+        self.all_stopwords = stopwords.words('english')
+        self.all_stopwords.remove('not')
+
+        self.dataset = None
+        self.count_vectorizer = None
+
+    def preprocess_dataset(self, dataset):
+        """Loop over entire dataset to preprocess"""
+        corpus = []
+        for i in range(0, len(dataset)):
+            corpus.append(self.preprocess_review(dataset['Review'][i]))
+        return corpus
+
+    def preprocess_review(self, review):
+        """Processing a single review"""
+        review = re.sub('[^a-zA-Z]', ' ', review)
         review = review.lower()
         review = review.split()
-        review = [ps.stem(word) for word in review if not word in set(all_stopwords)]
+        review = [self.porter_stem.stem(word) for word in review if not word in set(self.all_stopwords)]
         review = ' '.join(review)
-        corpus.append(review)
+        return review
+        
 
-    cv = CountVectorizer(max_features = 1420)
+if __name__ == "__main__":
+    # Specify the relative path to data tsv
+    root_path = os.path.dirname(os.path.abspath(__file__))
+    dataset_path = os.path.join(root_path, '..', 'data', 'external', 'a1_RestaurantReviews_HistoricDump.tsv')
 
-    X = cv.fit_transform(corpus).toarray()
-    y = dataset.iloc[:, -1].values
+    # Load data from file
+    load_dataset = pd.read_csv(dataset_path, delimiter = '\t', quoting = 3, dtype={'Review': object, 'Liked': int})[:]
 
-    # Saving BoW dictionary to later use in prediction
-    bow_path = 'res/c1_BoW_Sentiment_Model.pkl'
-    pickle.dump(cv, open(bow_path, "wb"))
-    
-    return X, y
+    # Preprocess and store processed corpus in joblib
+    print("Preprocessing the dataset...")
+    preprocess_class = Preprocessing()
+    save_corpus = preprocess_class.preprocess_dataset(load_dataset)
+    corpus_path = os.path.join(root_path, '..', 'data/processed/corpus.joblib')
+    joblib.dump(save_corpus, corpus_path)
+    print(f"Processed dataset (corpus) is saved to: {corpus_path}")
