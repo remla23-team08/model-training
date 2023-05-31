@@ -2,4 +2,8 @@ joblib==1.1.1
 nltk==3.7
 scikit_learn==1.2.2
 setuptools==45.2.0
-
+dvc==2.58.1
+dvc_gdrive==2.19.2
+pylint==2.12.2
+mllint==0.12.2
+dslinter==2.0.9
