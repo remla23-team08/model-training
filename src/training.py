@@ -31,7 +31,7 @@ if __name__ == "__main__":
     y = dataset.iloc[:, -1].values
 
     # Create train-test split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.10, random_state = 0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 0)
 
     # define and fit classifier
     classifier = GaussianNB()
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     # Evaluate model
     conf_matrix, acc_score = model_eval(classifier, X_test, y_test)
 
-    metric_json = {'Accuracy': acc_score}
+    metric_json = {'Accuracy': acc_score, 'Confusion Matrix': str(conf_matrix)}
 
     # Save results to reports/model_evaluation.json
 
