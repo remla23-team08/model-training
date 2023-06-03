@@ -7,8 +7,8 @@ stages:
       md5: 102f1f4193e0bdebdd6cce7f13e0a839
       size: 54686
     - path: src/preprocessing.py
-      md5: b45d76ab50b20ccabfb50d591ee7ef02
-      size: 2034
+      md5: a89120a3f336a09b93f666b9fc31b949
+      size: 2026
     outs:
     - path: data/processed/corpus.joblib
       md5: 243212bb05cce5e3fdc72bfd2826d329
@@ -48,3 +48,5 @@ stages:
     - path: reports/model_evaluation.txt
       md5: 35b131f5c189995225c586a8ae7025d9
       size: 67
+  linting:
+    cmd: pylint src
