@@ -58,7 +58,7 @@ stages:
     cmd: python src/pipeline/evaluation.py --output reports/model_evaluation.json
     deps:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
-      md5: 983f4905fa4dbcaabe71cc58779fce4f
+      md5: 7b5775b55574c74cf828b4577e73f26d
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       md5: 527a8f24c9766cd8ec50d943997acb76
@@ -71,5 +71,5 @@ stages:
       size: 2038
     outs:
     - path: reports/model_evaluation.json
-      md5: f731c8ac8061065b79f6492438a0cf93
+      md5: ced9e7cf4502282c409734a3d577f195
       size: 75

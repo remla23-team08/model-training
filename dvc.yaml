@@ -7,7 +7,6 @@ stages:
     cmd: python src/pipeline/load_data.py
     deps:
     - src/pipeline/load_data.py
-    - 
     outs:
     - data/external/a1_RestaurantReviews_HistoricDump.tsv
     - data/external/a2_RestaurantReviews_FreshDump.tsv
