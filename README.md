@@ -16,6 +16,11 @@ dvc exp run
 ```
 
 This will automatically download the dataset from an external source, pre-process the dataset, train the model and save the evaluation results in `reports/model_evaluation.json`. Tests will also automatically be ran. Linting via Pylint and DSLinter is also automatically run as part of the pipeline.
+
+To view a graphical representation of the pipeline, run the following command:
+``` bash
+dvc dag
+```
 ### Remote
 A Google drive folder has been configured to be used as remote storage.
 

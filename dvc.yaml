@@ -1,8 +1,13 @@
 stages:
+  linting:
+    cmd: pylint src
+    deps: 
+      - .pylintrc
   load_data:
     cmd: python src/pipeline/load_data.py
     deps:
     - src/pipeline/load_data.py
+    - 
     outs:
     - data/external/a1_RestaurantReviews_HistoricDump.tsv
     - data/external/a2_RestaurantReviews_FreshDump.tsv
@@ -18,7 +23,6 @@ stages:
     deps:
     - src/pipeline/training.py
     - src/pipeline/preprocessing.py
-    - src/pipeline/evaluation.py
     - data/external/a1_RestaurantReviews_HistoricDump.tsv
     - data/processed/corpus.joblib
     outs:
@@ -27,10 +31,15 @@ stages:
   evaluation:
     cmd: python src/pipeline/evaluation.py --output reports/model_evaluation.json
     deps:
+    - src/pipeline/evaluation.py
     - src/pipeline/preprocessing.py
     - data/models/c1_BoW_Sentiment_Model.pkl
     - data/models/c2_Classifier_Sentiment_Model
     metrics:
     - reports/model_evaluation.json
-  linting:
-    cmd: pylint src
+  # testing:
+  #   cmd: pytest
+  #   deps: 
+  #   - src/pipeline/evaluation.py
+  #   - data/models/c1_BoW_Sentiment_Model.pkl
+  #   - data/models/c2_Classifier_Sentiment_Model
