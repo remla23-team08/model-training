@@ -5,19 +5,18 @@ File that trains the model based on preprocessed data from earlier stages
 """
 
 import os
-import json
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 import joblib
 import pandas as pd
-from evaluation import model_eval
+
 
 if __name__ == "__main__":
     # Specify the absolute path to corpus and dataset
     root_path = os.path.dirname(os.path.abspath(__file__))
-    corpus_path = os.path.join(root_path, '..', 'data/processed/corpus.joblib')
-    dataset_path = os.path.join(root_path, '..', 'data/external/a1_RestaurantReviews_HistoricDump.tsv')
+    corpus_path = os.path.join(root_path, '..', '..', 'data/processed/corpus.joblib')
+    dataset_path = os.path.join(root_path, '..', '..', 'data/external/a1_RestaurantReviews_HistoricDump.tsv')
 
     # Load data
     corpus = joblib.load(corpus_path)
@@ -38,16 +37,5 @@ if __name__ == "__main__":
     classifier.fit(X_train, y_train)
 
     # Store model and CV
-    joblib.dump(classifier, os.path.join(root_path, '..', 'data/models/c2_Classifier_Sentiment_Model'))
-    joblib.dump(count_vectoriser, os.path.join(root_path, '..', 'data', 'models', 'c1_BoW_Sentiment_Model.pkl'))
-
-    # Evaluate model
-    conf_matrix, acc_score = model_eval(classifier, X_test, y_test)
-
-    metric_json = {'Accuracy': acc_score}
-
-    # Save results to reports/model_evaluation.json
-
-    with open(os.path.join(root_path, '..', 'reports/model_evaluation.json'), 'w', encoding='UTF-8') as f:
-        json.dump(metric_json, f)
-    print("Evaluation results saved to evaluation_results.json")
+    joblib.dump(classifier, os.path.join(root_path, '..', '..', 'data/models/c2_Classifier_Sentiment_Model'))
+    joblib.dump(count_vectoriser, os.path.join(root_path, '..', '..', 'data', 'models', 'c1_BoW_Sentiment_Model.pkl'))

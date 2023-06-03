@@ -1,8 +1,10 @@
+************* Module src.pipeline.evaluation
+src/pipeline/evaluation.py:54:92: C0303: Trailing whitespace (trailing-whitespace)
 
 
 Report
 ======
-84 statements analysed.
+100 statements analysed.
 
 Statistics by type
 ------------------
@@ -10,7 +12,7 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |5      |5          |=          |100.00      |0.00     |
+|module   |6      |6          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
@@ -25,18 +27,21 @@ External dependencies
 ---------------------
 ::
 
-    joblib (src.preprocessing,src.training)
-    nltk (src.preprocessing)
-      \-corpus (src.preprocessing)
+    joblib (src.pipeline.evaluation,src.pipeline.preprocessing,src.pipeline.training)
+    nltk (src.pipeline.preprocessing)
+      \-corpus (src.pipeline.preprocessing)
       \-stem 
-        \-porter (src.preprocessing)
-    pandas (src.preprocessing,src.training)
+        \-porter (src.pipeline.preprocessing)
+    pandas (src.pipeline.evaluation,src.pipeline.preprocessing,src.pipeline.training)
     sklearn 
       \-feature_extraction 
-      | \-text (src.training)
-      \-metrics (src.evaluation)
-      \-model_selection (src.training)
-      \-naive_bayes (src.training)
+      | \-text (src.pipeline.training)
+      \-metrics (src.pipeline.evaluation)
+      \-model_selection (src.pipeline.evaluation,src.pipeline.training)
+      \-naive_bayes (src.pipeline.training)
+    src 
+      \-pipeline 
+        \-preprocessing (src.pipeline.evaluation)
 
 
 
@@ -46,13 +51,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |93     |53.76 |93       |=          |
+|code      |110    |53.66 |111      |-1.00      |
 +----------+-------+------+---------+-----------+
-|docstring |20     |11.56 |20       |=          |
+|docstring |22     |10.73 |21       |+1.00      |
 +----------+-------+------+---------+-----------+
-|comment   |21     |12.14 |21       |=          |
+|comment   |26     |12.68 |26       |=          |
 +----------+-------+------+---------+-----------+
-|empty     |39     |22.54 |39       |=          |
+|empty     |47     |22.93 |48       |-1.00      |
 +----------+-------+------+---------+-----------+
 
 
@@ -76,11 +81,11 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |0      |0        |0          |
+|convention |1      |0        |0          |
 +-----------+-------+---------+-----------+
 |refactor   |0      |0        |0          |
 +-----------+-------+---------+-----------+
-|warning    |0      |0        |0          |
+|warning    |0      |1        |1          |
 +-----------+-------+---------+-----------+
 |error      |0      |0        |0          |
 +-----------+-------+---------+-----------+
@@ -90,13 +95,15 @@ Messages by category
 Messages
 --------
 
-+-----------+------------+
-|message id |occurrences |
-+===========+============+
++--------------------+------------+
+|message id          |occurrences |
++====================+============+
+|trailing-whitespace |1           |
++--------------------+------------+
 
 
 
 
---------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+------------------------------------------------------------------
+Your code has been rated at 9.90/10 (previous run: 9.90/10, -0.00)
 

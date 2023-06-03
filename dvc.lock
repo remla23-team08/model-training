@@ -1,24 +1,24 @@
 schema: '2.0'
 stages:
   preprocessing:
-    cmd: python src/preprocessing.py
+    cmd: python src/pipeline/preprocessing.py
     deps:
     - path: data/external/a1_RestaurantReviews_HistoricDump.tsv
       md5: 102f1f4193e0bdebdd6cce7f13e0a839
       size: 54686
-    - path: src/preprocessing.py
-      md5: a89120a3f336a09b93f666b9fc31b949
-      size: 2026
+    - path: src/pipeline/preprocessing.py
+      md5: 2939fdfbdbb8254ed5ee7e228a46d3a5
+      size: 2038
     outs:
     - path: data/processed/corpus.joblib
       md5: 243212bb05cce5e3fdc72bfd2826d329
       size: 31612
   load_data:
-    cmd: python src/load_data.py
+    cmd: python src/pipeline/load_data.py
     deps:
-    - path: src/load_data.py
-      md5: e579b1f5296f89c5f22d8ac4af92e1c0
-      size: 913
+    - path: src/pipeline/load_data.py
+      md5: 4261731cb0748f8fa8805c370a2bafce
+      size: 919
     outs:
     - path: data/external/a1_RestaurantReviews_HistoricDump.tsv
       md5: 102f1f4193e0bdebdd6cce7f13e0a839
@@ -27,7 +27,7 @@ stages:
       md5: 097c8b95f6b255e5a6a06b29d61fef8e
       size: 6504
   training:
-    cmd: python src/training.py --output reports/model_evaluation.json
+    cmd: python src/pipeline/training.py
     deps:
     - path: data/external/a1_RestaurantReviews_HistoricDump.tsv
       md5: 102f1f4193e0bdebdd6cce7f13e0a839
@@ -35,21 +35,37 @@ stages:
     - path: data/processed/corpus.joblib
       md5: 243212bb05cce5e3fdc72bfd2826d329
       size: 31612
-    - path: src/evaluation.py
-      md5: 96c08113733680243cbc537a93cc128d
-      size: 396
-    - path: src/training.py
-      md5: 6bcb855a62dcaf8b9b0475562bf0ffc4
-      size: 1936
+    - path: src/pipeline/evaluation.py
+      md5: 1d3a125c3a1aa30664f83b1ca4f97716
+      size: 1907
+    - path: src/pipeline/preprocessing.py
+      md5: 2939fdfbdbb8254ed5ee7e228a46d3a5
+      size: 2038
+    - path: src/pipeline/training.py
+      md5: 71f7ea4f607346e17a2264aa12da221d
+      size: 1522
     outs:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
-      md5: 361796f4e49d7074b52a6f0958ed727d
+      md5: a94d81a3c0219a5914aa34934f9c0b7f
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       md5: 527a8f24c9766cd8ec50d943997acb76
       size: 46127
-    - path: reports/model_evaluation.json
-      md5: 6d87f800bd2e12e916637aedca525ed9
-      size: 32
   linting:
     cmd: pylint src
+  evaluation:
+    cmd: python src/pipeline/evaluation.py --output reports/model_evaluation.json
+    deps:
+    - path: data/models/c1_BoW_Sentiment_Model.pkl
+      md5: a94d81a3c0219a5914aa34934f9c0b7f
+      size: 39823
+    - path: data/models/c2_Classifier_Sentiment_Model
+      md5: 527a8f24c9766cd8ec50d943997acb76
+      size: 46127
+    - path: src/pipeline/preprocessing.py
+      md5: 2939fdfbdbb8254ed5ee7e228a46d3a5
+      size: 2038
+    outs:
+    - path: reports/model_evaluation.json
+      md5: f731c8ac8061065b79f6492438a0cf93
+      size: 75

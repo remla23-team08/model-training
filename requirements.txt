@@ -7,3 +7,4 @@ dvc_gdrive==2.19.2
 pylint==2.12.2
 mllint==0.12.2
 dslinter==2.0.9
+pytest==7.3.1
