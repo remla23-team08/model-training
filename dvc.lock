@@ -39,17 +39,17 @@ stages:
       md5: 96c08113733680243cbc537a93cc128d
       size: 396
     - path: src/training.py
-      md5: 6bcb855a62dcaf8b9b0475562bf0ffc4
-      size: 1936
+      md5: ab3f950f470fc8557748ae84c3134d87
+      size: 1974
     outs:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
-      md5: 361796f4e49d7074b52a6f0958ed727d
+      md5: 3820668639e5762eb829ced5be1a5cfb
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       md5: 527a8f24c9766cd8ec50d943997acb76
       size: 46127
     - path: reports/model_evaluation.json
-      md5: 6d87f800bd2e12e916637aedca525ed9
-      size: 32
+      md5: f731c8ac8061065b79f6492438a0cf93
+      size: 75
   linting:
     cmd: pylint src

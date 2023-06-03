@@ -1,5 +1,5 @@
 # model-training
-Contains the ML training pipeline used for the main project of course CS4295: Release Engineering for Machine Learning Applications. This pipeline is of an ML model that evaluates restaurant reviews.
+Contains the ML training pipeline used for the main project of course CS4295: Release Engineering for Machine Learning Applications. This pipeline is of an ML model that evaluates restaurant reviews. The repository structure is based off the Cookiecutter template.
 
 ## Dependencies
 All required packages can be found in `requirements.txt`. To install the required packages, run the following command:
@@ -25,6 +25,7 @@ The accuracy metric is stored in `reports/model_evaluation.json`. In order to se
 ```bash
 dvc exp show
 ```
+Two experiments are listed, comparing the use of a 20% and 10% test split size. 
 ### Dataset
 Project was created using the dataset provided by course instructors on [SURFdrive](https://surfdrive.surf.nl/files/index.php/s/207BTysNQFuVZPE?path=%2Fmaterial).
 

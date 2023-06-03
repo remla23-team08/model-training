@@ -44,7 +44,7 @@ if __name__ == "__main__":
     # Evaluate model
     conf_matrix, acc_score = model_eval(classifier, X_test, y_test)
 
-    metric_json = {'Accuracy': acc_score}
+    metric_json = {'Accuracy': acc_score, 'Confusion Matrix': str(conf_matrix)}
 
     # Save results to reports/model_evaluation.json
 
