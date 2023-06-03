@@ -23,8 +23,11 @@ stages:
     - path: data/external/a1_RestaurantReviews_HistoricDump.tsv
       md5: 102f1f4193e0bdebdd6cce7f13e0a839
       size: 54686
+    - path: data/external/a2_RestaurantReviews_FreshDump.tsv
+      md5: 097c8b95f6b255e5a6a06b29d61fef8e
+      size: 6504
   training:
-    cmd: python src/training.py
+    cmd: python src/training.py --output reports/model_evaluation.json
     deps:
     - path: data/external/a1_RestaurantReviews_HistoricDump.tsv
       md5: 102f1f4193e0bdebdd6cce7f13e0a839
@@ -36,17 +39,17 @@ stages:
       md5: 96c08113733680243cbc537a93cc128d
       size: 396
     - path: src/training.py
-      md5: 81ddde09ae93959e83afb4bae0ddd90a
-      size: 2073
+      md5: 6bcb855a62dcaf8b9b0475562bf0ffc4
+      size: 1936
     outs:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
-      md5: 47e4584e52d616cbb5af92f988648e27
+      md5: 361796f4e49d7074b52a6f0958ed727d
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
-      md5: e6e6744062a1d370a585d15df7f45934
+      md5: 527a8f24c9766cd8ec50d943997acb76
       size: 46127
-    - path: reports/model_evaluation.txt
-      md5: 35b131f5c189995225c586a8ae7025d9
-      size: 67
+    - path: reports/model_evaluation.json
+      md5: 6d87f800bd2e12e916637aedca525ed9
+      size: 32
   linting:
     cmd: pylint src

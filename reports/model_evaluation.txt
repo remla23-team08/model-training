@@ -1,5 +1,0 @@
-Confusion Matrix:
-[[67 11]
- [38 64]]
-
-Accuracy: 0.7277777777777777

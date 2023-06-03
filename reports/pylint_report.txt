@@ -2,7 +2,7 @@
 
 Report
 ======
-109 statements analysed.
+84 statements analysed.
 
 Statistics by type
 ------------------
@@ -10,13 +10,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |7      |7          |=          |100.00      |0.00     |
+|module   |5      |5          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |3      |3          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |3      |3          |=          |100.00      |0.00     |
+|function |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -25,7 +25,7 @@ External dependencies
 ---------------------
 ::
 
-    joblib (src.main,src.preprocessing,src.training)
+    joblib (src.preprocessing,src.training)
     nltk (src.preprocessing)
       \-corpus (src.preprocessing)
       \-stem 
@@ -35,8 +35,8 @@ External dependencies
       \-feature_extraction 
       | \-text (src.training)
       \-metrics (src.evaluation)
-      \-model_selection (src.classification,src.training)
-      \-naive_bayes (src.classification,src.training)
+      \-model_selection (src.training)
+      \-naive_bayes (src.training)
 
 
 
@@ -46,13 +46,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |122    |49.19 |122      |=          |
+|code      |93     |53.76 |93       |=          |
 +----------+-------+------+---------+-----------+
-|docstring |32     |12.90 |32       |=          |
+|docstring |20     |11.56 |20       |=          |
 +----------+-------+------+---------+-----------+
-|comment   |37     |14.92 |37       |=          |
+|comment   |21     |12.14 |21       |=          |
 +----------+-------+------+---------+-----------+
-|empty     |57     |22.98 |57       |=          |
+|empty     |39     |22.54 |39       |=          |
 +----------+-------+------+---------+-----------+
 
 

@@ -5,6 +5,7 @@ File that trains the model based on preprocessed data from earlier stages
 """
 
 import os
+import json
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
@@ -30,7 +31,7 @@ if __name__ == "__main__":
     y = dataset.iloc[:, -1].values
 
     # Create train-test split
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.10, random_state = 0)
 
     # define and fit classifier
     classifier = GaussianNB()
@@ -43,13 +44,10 @@ if __name__ == "__main__":
     # Evaluate model
     conf_matrix, acc_score = model_eval(classifier, X_test, y_test)
 
-    # Save results to reports/model_evaluation.txt
-    with open(os.path.join(root_path, '..', 'reports/model_evaluation.txt'), 'w', encoding='UTF-8') as file:
-        # Write confusion matrix
-        file.write("Confusion Matrix:\n")
-        file.write(str(conf_matrix))
-        file.write("\n\n")
+    metric_json = {'Accuracy': acc_score}
 
-        # Write other evaluation scores
-        file.write(f"Accuracy: {acc_score}\n")
-    print("Evaluation results saved to evaluation_results.txt")
+    # Save results to reports/model_evaluation.json
+
+    with open(os.path.join(root_path, '..', 'reports/model_evaluation.json'), 'w', encoding='UTF-8') as f:
+        json.dump(metric_json, f)
+    print("Evaluation results saved to evaluation_results.json")

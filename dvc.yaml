@@ -5,6 +5,7 @@ stages:
     - src/load_data.py
     outs:
     - data/external/a1_RestaurantReviews_HistoricDump.tsv
+    - data/external/a2_RestaurantReviews_FreshDump.tsv
   preprocessing:
     cmd: python src/preprocessing.py
     deps:
@@ -13,7 +14,7 @@ stages:
     outs:
     - data/processed/corpus.joblib
   training:
-    cmd: python src/training.py
+    cmd: python src/training.py --output reports/model_evaluation.json
     deps:
     - src/training.py
     - src/evaluation.py
@@ -22,7 +23,7 @@ stages:
     outs:
     - data/models/c1_BoW_Sentiment_Model.pkl
     - data/models/c2_Classifier_Sentiment_Model
-    - reports/model_evaluation.txt
+    metrics:
+    - reports/model_evaluation.json
   linting:
     cmd: pylint src
-      

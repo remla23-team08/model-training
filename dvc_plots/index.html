@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>DVC Plot</title>
+    
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+    <style>
+        table {
+            border-spacing: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id = "pcp">
+        <script type = "text/javascript">
+            var plotly_data = {"data": [{"type": "parcoords", "dimensions": [{"label": "Experiment", "values": [1, 0, 2], "tickvals": [1, 0, 2], "ticktext": ["workspace", "testing", "\u2514\u2500\u2500 37da017 [rapid-debs]"]}, {"label": "Accuracy", "values": [0.77778, null, 0.72778]}, {"label": "src/training.py", "values": [0, 1, 2], "tickvals": [0, 1, 2], "ticktext": ["6bcb855a62dcaf8b9b0475562bf0ffc4", "81ddde09ae93959e83afb4bae0ddd90a", "c3d9e6c08326c71e4890108b8ea03cef"]}], "line": {"color": [1, 0, 2], "showscale": true, "colorbar": {"title": "Experiment", "tickmode": "array", "tickvals": [1, 0, 2], "ticktext": ["workspace", "testing", "\u2514\u2500\u2500 37da017 [rapid-debs]"]}}}], "layout": {}};
+            Plotly.newPlot("pcp", plotly_data.data, plotly_data.layout);
+        </script>
+    </div>
+    
+</body>
+</html>
