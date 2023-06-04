@@ -5,11 +5,13 @@ File that trains the model based on preprocessed data from earlier stages
 """
 
 import os
+
+import joblib
+import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
-import joblib
-import pandas as pd
+
 from evaluation import model_eval
 
 if __name__ == "__main__":

@@ -5,11 +5,13 @@ Main execution script to manually execute the processing pipeline
 """
 
 import os
+
 import joblib
-from load_data import load_data
-from preprocessing import data_preprocessing
+
 from classification import data_classification
 from evaluation import model_eval
+from load_data import load_data
+from preprocessing import data_preprocessing
 
 # Get the root path of the current script
 root_path = os.path.dirname(os.path.abspath(__file__))

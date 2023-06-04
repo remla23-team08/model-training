@@ -8,7 +8,6 @@ import os
 import urllib.request
 import zipfile
 
-
 if __name__ == "__main__":
        # Specify the relative path to data tsv
     root_path = os.path.dirname(os.path.abspath(__file__))

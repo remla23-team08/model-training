@@ -4,7 +4,7 @@
 Evaluate the model and return results
 """
 
-from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix
 
 
 def model_eval(classifier, X_test, y_test):
