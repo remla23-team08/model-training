@@ -48,6 +48,12 @@ jobs:
           useConfigFile: true
           configFilePath: GitVersion.yml
       
+      - name: Install & Configure Poetry
+        uses: snok/install-poetry@v1
+      
+      - name: Update poetry package version
+        run: poetry version ${{ steps.get_gitversion.outputs.majorMinorPatch }}
+      
       - name: Commit, tag and release new version
         env: 
           GITHUB_TOKEN: ${{ steps.generate_github_app_token.outputs.token }}
