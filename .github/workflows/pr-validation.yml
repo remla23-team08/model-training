@@ -38,4 +38,9 @@ jobs:
         run: |
           set -e # fail on error
           poetry run pylint -j --fail-under=10.0 src
+      
+      - name: Run mllint
+        run: |
+          set -e # fail on error
+          poetry run mllint
         
