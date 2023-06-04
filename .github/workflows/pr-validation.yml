@@ -1,9 +1,9 @@
-name: Build Pipeline
+name: Pull Request Validation Pipeline
 on: [pull_request]
 
 jobs:
-  pylint:
-    name: Check code style
+  pr-validation:
+    name: Pull Request Validation
     runs-on: ubuntu-22.04
     steps:
       - name: Generate GitHub App Token
@@ -25,11 +25,17 @@ jobs:
         with:
           python-version: 3.11
       
-      - name: Install dependencies
+      - name: Install & configure Poetry
+        uses: snok/install-poetry@v1
+      
+      - name: Install & validate Poetry dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install pylint dslinter
+          set -e # fail on error
+          poetry install
+          poetry check
       
       - name: Run Pylint
-        run: pylint src
+        run: |
+          set -e # fail on error
+          poetry run pylint -j --fail-under=10.0 src
         

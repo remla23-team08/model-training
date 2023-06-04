@@ -30,7 +30,6 @@ External dependencies
       \-corpus (src.preprocessing)
       \-stem 
         \-porter (src.preprocessing)
-    pandas (src.preprocessing,src.training)
     sklearn 
       \-feature_extraction 
       | \-text (src.training)
@@ -76,7 +75,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |0      |1        |1          |
+|convention |0      |0        |0          |
 +-----------+-------+---------+-----------+
 |refactor   |0      |0        |0          |
 +-----------+-------+---------+-----------+
@@ -97,6 +96,6 @@ Messages
 
 
 
--------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 9.91/10, +0.09)
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
