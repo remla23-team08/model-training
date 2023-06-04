@@ -20,6 +20,14 @@ mllint = "^0.12.2"
 dslinter = "^2.0.9"
 dvc = "^2.58.1"
 dvc_gdrive = "^2.19.2"
+black = "^23.3.0"
+isort = "^5.12.0"
+
+[tool.mllint.rules]
+disabled = ["dependency-management/single"]
+
+[tool.isort]
+profile = "black"
 
 [build-system]
 requires = ["poetry-core"]
