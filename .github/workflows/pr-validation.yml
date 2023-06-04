@@ -34,13 +34,18 @@ jobs:
           poetry install
           poetry check
       
-      - name: Run Pylint
+      - name: Run pylint
         run: |
           set -e # fail on error
           poetry run pylint -j --fail-under=10.0 src
       
-      - name: Run mllint
+      - name: Run isort
         run: |
           set -e # fail on error
-          poetry run mllint
-        
+          poetry run isort --check-only .
+      
+      - name: Run black
+        run: | 
+          set -e # fail on error
+          poetry run black --check .
+      
