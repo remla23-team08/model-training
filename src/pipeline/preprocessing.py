@@ -46,7 +46,7 @@ class Preprocessing:
 if __name__ == "__main__":
     # Specify the relative path to data tsv
     root_path = os.path.dirname(os.path.abspath(__file__))
-    dataset_path = os.path.join(root_path, '..', 'data', 'external', 'a1_RestaurantReviews_HistoricDump.tsv')
+    dataset_path = os.path.join(root_path, '..', '..', 'data', 'external', 'a1_RestaurantReviews_HistoricDump.tsv')
 
     # Load data from file
     load_dataset = pd.read_csv(dataset_path, delimiter = '\t', quoting = 3, dtype={'Review': object, 'Liked': int})[:]
@@ -55,6 +55,6 @@ if __name__ == "__main__":
     print("Preprocessing the dataset...")
     preprocess_class = Preprocessing()
     save_corpus = preprocess_class.preprocess_dataset(load_dataset)
-    corpus_path = os.path.join(root_path, '..', 'data/processed/corpus.joblib')
+    corpus_path = os.path.join(root_path, '..', '..', 'data/processed/corpus.joblib')
     joblib.dump(save_corpus, corpus_path)
     print(f"Processed dataset (corpus) is saved to: {corpus_path}")

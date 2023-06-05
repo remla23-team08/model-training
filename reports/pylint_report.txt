@@ -2,7 +2,7 @@
 
 Report
 ======
-109 statements analysed.
+100 statements analysed.
 
 Statistics by type
 ------------------
@@ -10,13 +10,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |7      |7          |=          |100.00      |0.00     |
+|module   |6      |6          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |3      |3          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |3      |3          |=          |100.00      |0.00     |
+|function |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -25,18 +25,21 @@ External dependencies
 ---------------------
 ::
 
-    joblib (src.main,src.preprocessing,src.training)
-    nltk (src.preprocessing)
-      \-corpus (src.preprocessing)
+    joblib (src.pipeline.evaluation,src.pipeline.preprocessing,src.pipeline.training)
+    nltk (src.pipeline.preprocessing)
+      \-corpus (src.pipeline.preprocessing)
       \-stem 
-        \-porter (src.preprocessing)
-    pandas (src.preprocessing,src.training)
+        \-porter (src.pipeline.preprocessing)
+    pandas (src.pipeline.evaluation,src.pipeline.preprocessing,src.pipeline.training)
     sklearn 
       \-feature_extraction 
-      | \-text (src.training)
-      \-metrics (src.evaluation)
-      \-model_selection (src.classification,src.training)
-      \-naive_bayes (src.classification,src.training)
+      | \-text (src.pipeline.training)
+      \-metrics (src.pipeline.evaluation)
+      \-model_selection (src.pipeline.evaluation,src.pipeline.training)
+      \-naive_bayes (src.pipeline.training)
+    src 
+      \-pipeline 
+        \-preprocessing (src.pipeline.evaluation)
 
 
 
@@ -46,13 +49,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |122    |49.19 |122      |=          |
+|code      |110    |53.66 |110      |=          |
 +----------+-------+------+---------+-----------+
-|docstring |32     |12.90 |32       |=          |
+|docstring |22     |10.73 |22       |=          |
 +----------+-------+------+---------+-----------+
-|comment   |37     |14.92 |37       |=          |
+|comment   |26     |12.68 |26       |=          |
 +----------+-------+------+---------+-----------+
-|empty     |57     |22.98 |57       |=          |
+|empty     |47     |22.93 |47       |=          |
 +----------+-------+------+---------+-----------+
 
 
@@ -76,7 +79,7 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |0      |1        |1          |
+|convention |0      |0        |0          |
 +-----------+-------+---------+-----------+
 |refactor   |0      |0        |0          |
 +-----------+-------+---------+-----------+
@@ -97,6 +100,6 @@ Messages
 
 
 
--------------------------------------------------------------------
-Your code has been rated at 10.00/10 (previous run: 9.91/10, +0.09)
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 

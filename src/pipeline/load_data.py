@@ -12,7 +12,7 @@ import zipfile
 if __name__ == "__main__":
        # Specify the relative path to data tsv
     root_path = os.path.dirname(os.path.abspath(__file__))
-    dataset_path = os.path.join(root_path, '..', 'data', 'external', 'a1_RestaurantReviews_HistoricDump.tsv')
+    dataset_path = os.path.join(root_path, '..', '..', 'data', 'external', 'a1_RestaurantReviews_HistoricDump.tsv')
 
     # Import the data from external source
     print("Importing external dataset..")
