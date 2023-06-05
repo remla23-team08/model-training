@@ -26,7 +26,9 @@ jobs:
           python-version: 3.11
       
       - name: Install & configure Poetry
-        uses: snok/install-poetry@v1
+        uses: snok/install-poetry@v1.3.3
+        with:
+          version: 1.5.1
       
       - name: Install & validate Poetry dependencies
         run: |
