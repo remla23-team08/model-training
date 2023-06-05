@@ -48,8 +48,10 @@ jobs:
           useConfigFile: true
           configFilePath: GitVersion.yml
       
-      - name: Install & Configure Poetry
-        uses: snok/install-poetry@v1
+      - name: Install & configure Poetry
+        uses: snok/install-poetry@v1.3.3
+        with:
+          version: 1.5.1
       
       - name: Update poetry package version
         run: poetry version ${{ steps.get_gitversion.outputs.majorMinorPatch }}
