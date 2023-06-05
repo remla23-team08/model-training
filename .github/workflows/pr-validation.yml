@@ -32,7 +32,6 @@ jobs:
       
       - name: Install & validate Poetry dependencies
         run: |
-          set -e # fail on error
           poetry install
           poetry check
       
