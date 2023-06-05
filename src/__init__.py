@@ -1,3 +1,3 @@
-"""Top-level package for model-training."""
+"""src init"""
 
 __author__ = """Team 08"""
