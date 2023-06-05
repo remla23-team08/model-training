@@ -4,13 +4,16 @@
 Evaluate the model and return results
 """
 
-import os
 import json
+import os
+
 import joblib
 import pandas as pd
+from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, accuracy_score
+
 from src.pipeline.preprocessing import Preprocessing
+
 
 def model_eval(classifier, set_path='data/external/a1_RestaurantReviews_HistoricDump.tsv', split=0.1, state=0):
     """

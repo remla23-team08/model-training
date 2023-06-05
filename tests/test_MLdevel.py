@@ -6,7 +6,9 @@ Tests regarding ML development
 
 import joblib
 import pytest
+
 from src.pipeline.evaluation import model_eval
+
 
 @pytest.fixture()
 def trained_model():

@@ -6,11 +6,12 @@ This file contains functions related to preprocessing of any data provided to th
 
 import os
 import re
+
+import joblib
 import nltk
+import pandas as pd
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
-import pandas as pd
-import joblib
 
 
 class Preprocessing:
