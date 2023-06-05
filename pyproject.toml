@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "model-training"
+version = "0.1.30"
+description = "Contains the machine learning training codebase of temla23-team08."
+authors = ["remla23-team08"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+numpy = "^1.21.2"
+joblib = "^1.1.1"
+nltk = "^3.8.1"
+scikit-learn = "^1.2.2"
+setuptools = "^45.2.0"
+pandas = "^2.0.2"
+pytest = "^7.3.1"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.11.2"
+mllint = "^0.12.2"
+dslinter = "^2.0.9"
+dvc = "^2.58.1"
+dvc_gdrive = "^2.19.2"
+black = "^23.3.0"
+isort = "^5.12.0"
+
+[tool.mllint.rules]
+disabled = ["dependency-management/single"]
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
