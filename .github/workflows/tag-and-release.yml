@@ -70,7 +70,7 @@ jobs:
           git add pyproject.toml # Add dependency version changes
           git commit -m "Update project version to ${{ steps.get_gitversion.outputs.majorMinorPatch }} [skip ci]"
           git tag ${{ steps.get_gitversion.outputs.majorMinorPatch }} -m "Release ${{ steps.get_gitversion.outputs.majorMinorPatch }}"
-          git push --tags
+          git push --set-upstream origin $(git branch --show-current) --follow-tags
 
           # Create a GitHub release from latest tag
           gh release create ${{ steps.get_gitversion.outputs.majorMinorPatch }} \
