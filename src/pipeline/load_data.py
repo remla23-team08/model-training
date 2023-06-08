@@ -18,7 +18,8 @@ if __name__ == "__main__":
     # Import the data from external source
     logging.info("Importing external dataset..")
 
-    URL = r"https://drive.google.com/uc?export=download&id=1G7rLkSloPUzkK4zCzb9lLR0zSYygu8mK"
+    # Define URL to download dataset from
+    URL = r"https://drive.google.com/uc?export=download&id=1G7rLkSloPUzkK4zCzb9lLR0zSYygu8mK"  # nosec B310
     zip_path, _ = urllib.request.urlretrieve(URL)
 
     # Define export path for dataset
