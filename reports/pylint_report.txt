@@ -1,25 +1,8 @@
-************* Module src.pipeline.training
-src/pipeline/training.py:1:0: R0801: Similar lines in 2 files
-==src.pipeline.load_data:[10:23]
-==src.pipeline.preprocessing:[50:63]
-if __name__ == "__main__":
-    # Specify the relative path to data tsv
-    root_path = os.path.dirname(os.path.abspath(__file__))
-    dataset_path = os.path.join(
-        root_path,
-        "..",
-        "..",
-        "data",
-        "external",
-        "a1_RestaurantReviews_HistoricDump.tsv",
-    )
-
-    # Import the data from external source (duplicate-code)
 
 
 Report
 ======
-100 statements analysed.
+108 statements analysed.
 
 Statistics by type
 ------------------
@@ -27,13 +10,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |6      |6          |=          |100.00      |0.00     |
+|module   |7      |7          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |3      |3          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |1      |1          |=          |100.00      |0.00     |
+|function |2      |2          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -66,13 +49,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |154    |57.68 |154      |=          |
+|code      |163    |56.40 |163      |=          |
 +----------+-------+------+---------+-----------+
-|docstring |37     |13.86 |37       |=          |
+|docstring |36     |12.46 |36       |=          |
 +----------+-------+------+---------+-----------+
-|comment   |26     |9.74  |26       |=          |
+|comment   |27     |9.34  |27       |=          |
 +----------+-------+------+---------+-----------+
-|empty     |50     |18.73 |50       |=          |
+|empty     |63     |21.80 |64       |-1.00      |
 +----------+-------+------+---------+-----------+
 
 
@@ -96,9 +79,9 @@ Messages by category
 +-----------+-------+---------+-----------+
 |type       |number |previous |difference |
 +===========+=======+=========+===========+
-|convention |0      |0        |0          |
+|convention |0      |1        |1          |
 +-----------+-------+---------+-----------+
-|refactor   |1      |1        |1          |
+|refactor   |0      |0        |0          |
 +-----------+-------+---------+-----------+
 |warning    |0      |0        |0          |
 +-----------+-------+---------+-----------+
@@ -110,15 +93,13 @@ Messages by category
 Messages
 --------
 
-+---------------+------------+
-|message id     |occurrences |
-+===============+============+
-|duplicate-code |1           |
-+---------------+------------+
++-----------+------------+
+|message id |occurrences |
++===========+============+
 
 
 
 
-------------------------------------------------------------------
-Your code has been rated at 9.90/10 (previous run: 9.90/10, +0.00)
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 9.91/10, +0.09)
 

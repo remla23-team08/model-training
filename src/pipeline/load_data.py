@@ -4,24 +4,20 @@
 This script loads data from the dataset_path into a pandas dataset.
 """
 
+import logging
 import os
 import urllib.request
 import zipfile
 
+from Util import Util
+
 if __name__ == "__main__":
     # Specify the relative path to data tsv
-    root_path = os.path.dirname(os.path.abspath(__file__))
-    dataset_path = os.path.join(
-        root_path,
-        "..",
-        "..",
-        "data",
-        "external",
-        "a1_RestaurantReviews_HistoricDump.tsv",
-    )
+    root_path, dataset_path = Util.get_paths()
 
     # Import the data from external source
-    print("Importing external dataset..")
+    logging.info("Importing external dataset..")
+
     URL = r"https://drive.google.com/uc?export=download&id=1G7rLkSloPUzkK4zCzb9lLR0zSYygu8mK"
     zip_path, _ = urllib.request.urlretrieve(URL)
 
@@ -33,4 +29,4 @@ if __name__ == "__main__":
         f.extractall(export_path)
 
     # Print success to console
-    print("External dataset sucessfully imported!")
+    logging.info("External dataset sucessfully imported!")

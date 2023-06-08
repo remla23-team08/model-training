@@ -5,6 +5,7 @@ Evaluate the model and return results
 """
 
 import json
+import logging
 import os
 
 import joblib
@@ -24,6 +25,7 @@ def model_eval(
     """
     Returns model evaluation metrics for given model and dataset
     """
+
     # Specify the absolute path to corpus and dataset
     root_path = os.path.dirname(os.path.abspath(__file__))
     dataset_path = os.path.join(root_path, "..", "..", set_path)
@@ -63,7 +65,8 @@ def model_eval(
         encoding="UTF-8",
     ) as f:
         json.dump(metric_json, f)
-    print("Evaluation results saved to evaluation_results.json")
+
+    logging.info("Evaluation results saved to evaluation_results.json")
 
     return acc_score, conf_matrix
 
