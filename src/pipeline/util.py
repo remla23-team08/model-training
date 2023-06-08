@@ -7,7 +7,6 @@ This file contains utility functions for the pipeline (for reusability).
 import os
 
 
-@staticmethod
 def get_paths():
     """Get the root path and dataset path."""
     root_path = os.path.dirname(os.path.abspath(__file__))

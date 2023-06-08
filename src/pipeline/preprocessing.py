@@ -13,7 +13,7 @@ import nltk
 import pandas as pd
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
-from Util import Util
+from util import get_paths
 
 
 class Preprocessing:
@@ -55,7 +55,7 @@ class Preprocessing:
 
 if __name__ == "__main__":
     # Specify the relative path to data tsv
-    root_path, dataset_path = Util.get_paths()
+    root_path, dataset_path = get_paths()
 
     # Load data from file
     load_dataset = pd.read_csv(

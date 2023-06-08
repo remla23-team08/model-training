@@ -9,11 +9,11 @@ import os
 import urllib.request
 import zipfile
 
-from Util import Util
+from util import get_paths
 
 if __name__ == "__main__":
     # Specify the relative path to data tsv
-    root_path, dataset_path = Util.get_paths()
+    root_path, dataset_path = get_paths()
 
     # Import the data from external source
     logging.info("Importing external dataset..")
