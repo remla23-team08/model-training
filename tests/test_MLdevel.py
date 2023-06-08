@@ -4,10 +4,10 @@
 Tests regarding ML development
 """
 
-import joblib
+import joblib  # type: ignore
 import pytest
 
-from src.pipeline.evaluation import model_eval
+from src.pipeline.evaluation import model_eval  # type: ignore
 
 
 @pytest.fixture()

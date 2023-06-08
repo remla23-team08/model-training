@@ -8,11 +8,11 @@ import logging
 import os
 import re
 
-import joblib
-import nltk
+import joblib  # type: ignore
+import nltk  # type: ignore
 import pandas as pd
-from nltk.corpus import stopwords
-from nltk.stem.porter import PorterStemmer
+from nltk.corpus import stopwords  # type: ignore
+from nltk.stem.porter import PorterStemmer  # type: ignore
 from util import get_paths
 
 

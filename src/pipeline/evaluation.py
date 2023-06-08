@@ -8,10 +8,10 @@ import json
 import logging
 import os
 
-import joblib
+import joblib  # type: ignore
 import pandas as pd
-from sklearn.metrics import accuracy_score, confusion_matrix
-from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, confusion_matrix  # type: ignore
+from sklearn.model_selection import train_test_split  # type: ignore
 
 from src.pipeline.preprocessing import Preprocessing
 
