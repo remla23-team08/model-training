@@ -5,12 +5,13 @@ Evaluate the model and return results
 """
 
 import json
+import logging
 import os
 
-import joblib
+import joblib  # type: ignore
 import pandas as pd
-from sklearn.metrics import accuracy_score, confusion_matrix
-from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, confusion_matrix  # type: ignore
+from sklearn.model_selection import train_test_split  # type: ignore
 
 from src.pipeline.preprocessing import Preprocessing
 
@@ -24,6 +25,7 @@ def model_eval(
     """
     Returns model evaluation metrics for given model and dataset
     """
+
     # Specify the absolute path to corpus and dataset
     root_path = os.path.dirname(os.path.abspath(__file__))
     dataset_path = os.path.join(root_path, "..", "..", set_path)
@@ -63,7 +65,8 @@ def model_eval(
         encoding="UTF-8",
     ) as f:
         json.dump(metric_json, f)
-    print("Evaluation results saved to evaluation_results.json")
+
+    logging.info("Evaluation results saved to evaluation_results.json")
 
     return acc_score, conf_matrix
 

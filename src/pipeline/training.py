@@ -6,11 +6,11 @@ File that trains the model based on preprocessed data from earlier stages
 
 import os
 
-import joblib
+import joblib  # type: ignore
 import pandas as pd
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
+from sklearn.feature_extraction.text import CountVectorizer  # type: ignore
+from sklearn.model_selection import train_test_split  # type: ignore
+from sklearn.naive_bayes import GaussianNB  # type: ignore
 
 if __name__ == "__main__":
     # Specify the absolute path to corpus and dataset
