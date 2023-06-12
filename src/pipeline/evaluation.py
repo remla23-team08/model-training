@@ -12,7 +12,7 @@ import pandas as pd
 from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import train_test_split
 
-from src.pipeline.preprocessing import Preprocessing
+from preprocessing import Preprocessing
 
 
 def model_eval(
