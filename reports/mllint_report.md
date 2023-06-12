@@ -1,12 +1,12 @@
 # ML Project Report
 **Project** | **Details**
 --------|--------
-Date    | Mon, 12 Jun 2023 13:27:00 +0200 
+Date    | Mon, 12 Jun 2023 14:25:13 +0200 
 Path    | `/home/amoraru/Documents/MSc/Q4/REMLA/model-training`
 Config  | `pyproject.toml`
 Default | Yes
 Git: Remote URL | `git@github.com:remla23-team08/model-training.git`
-Git: Commit     | `45adc9d1c64ae028e3cdb2d90b9ac4758dd119cc`
+Git: Commit     | `80dc0969aae353303cb3868c51a425f903ba053d`
 Git: Branch     | `feature/improve-code-quality`
 Git: Dirty Workspace?  | Yes
 Number of Python files | 9
@@ -66,11 +66,11 @@ Passed | Score | Weight | Rule | Slug
 
 Hooray, all linters detected:
 
-- Pylint
-- Mypy
 - Black
 - isort
 - Bandit
+- Pylint
+- Mypy
 
 
 #### Details — Pylint reports no issues with this project — ✅

@@ -1,0 +1,106 @@
+
+
+Report
+======
+114 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |7      |7          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |1      |1          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |3      |3          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|function |2      |2          |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    joblib (src.pipeline.evaluation,src.pipeline.preprocessing,src.pipeline.training)
+    nltk (src.pipeline.preprocessing)
+      \-corpus (src.pipeline.preprocessing)
+      \-stem 
+        \-porter (src.pipeline.preprocessing)
+    pandas (src.pipeline.evaluation,src.pipeline.preprocessing,src.pipeline.training)
+    requests (src.pipeline.load_data)
+    sklearn 
+      \-feature_extraction 
+      | \-text (src.pipeline.training)
+      \-metrics (src.pipeline.evaluation)
+      \-model_selection (src.pipeline.evaluation,src.pipeline.training)
+      \-naive_bayes (src.pipeline.training)
+    src 
+      \-pipeline 
+        \-preprocessing (src.pipeline.evaluation)
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |168    |56.19 |163      |+5.00      |
++----------+-------+------+---------+-----------+
+|docstring |36     |12.04 |36       |=          |
++----------+-------+------+---------+-----------+
+|comment   |30     |10.03 |27       |+3.00      |
++----------+-------+------+---------+-----------+
+|empty     |65     |21.74 |63       |+2.00      |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |0          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |0      |0        |0          |
++-----------+-------+---------+-----------+
+|refactor   |0      |0        |0          |
++-----------+-------+---------+-----------+
+|warning    |0      |0        |0          |
++-----------+-------+---------+-----------+
+|error      |0      |0        |0          |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++-----------+------------+
+|message id |occurrences |
++===========+============+
+
+
+
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+

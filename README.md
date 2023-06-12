@@ -1,40 +1,15 @@
 # model-training
 Contains the ML training pipeline used for the main project of course CS4295: Release Engineering for Machine Learning Applications. This pipeline is of an ML model that evaluates restaurant reviews. The repository structure is based off the Cookiecutter template.
 
-## **Dependencies**
+## **Pre-requisites**
 
-This project is using Poetry instead of Pip to manage dependencies. Poetry is a Python dependency management tool that simplifies the process of managing dependencies and packaging. Additionally, Poetry is also used to manage the virtual environment from which the project is run, thus not requiring the user to manually create a virtual environment.
+* Python >= `3.8`
+* Poetry
+* DVC
 
-### **Installation (Poetry)**
+This project is using Poetry instead of Pip to manage dependencies. Poetry is a Python dependency management tool that simplifies the process of managing dependencies and packaging. Additionally, Poetry is also used to manage the virtual environment from which the project is run, thus not requiring the user to manually create a virtual environment. As such, make sure you have poetry installed before proceeding with the next sections. 
 
-To install Poetry, please follow the instructions on the [Poetry website](https://python-poetry.org/docs/#installation) and follow the corresponding steps for your operating system.
-
-### **Installing dependencies**
-
-To install the project dependencies, please run the following command:
-
-```bash
-poetry install
-```
-
-This will install all dependencies listed in `pyproject.toml` and create a virtual environment for the project. As such, instead of using `pip` to install a specific dependency and then run that dependency in a virtual environment, Poetry will handle this for you.
-
-### **Adding a new dependency**
-
-To add a new dependency, please run the following command:
-
-```bash
-poetry add <dependency-name>
-```
-
-This will add the dependency to `pyproject.toml` and install it in the virtual environment.
-However, if you would like to install a dependency for development purposes, please run the following command:
-
-```bash
-poetry add --dev <dependency-name>
-```
-
-In any case, dependency changes will also show up in the `poetry.lock` file. This file is used to ensure that all developers are using the same versions of the dependencies. Consequently, it is good practice and actually recommended that this file is committed to version control. 
+> If you are not familiar with Poetry, you can find additional details about the setup by referring to the [Poetry Setup](#poetry-setup) section.
 
 ## **Usage**
 
@@ -83,6 +58,48 @@ Any preprocessing steps can be found in `preprocessing.py`. These are executed a
 
 The trained model is stored in `data/models/`.
 
+## **Poetry Setup**
+
+### **Installation (Poetry)**
+
+To install Poetry, please follow the instructions on the [Poetry website](https://python-poetry.org/docs/#installation) and follow the corresponding steps for your operating system.
+
+### **Installing dependencies**
+
+To install the project dependencies, please run the following command:
+
+```bash
+poetry install
+```
+
+This will install all dependencies listed in `pyproject.toml` and create a virtual environment for the project. As such, instead of using `pip` to install a specific dependency and then run that dependency in a virtual environment, Poetry will handle this for you.
+
+### **Adding a new dependency**
+
+To add a new dependency, please run the following command:
+
+```bash
+poetry add <dependency-name>
+```
+
+This will add the dependency to `pyproject.toml` and install it in the virtual environment.
+However, if you would like to install a dependency for development purposes, please run the following command:
+
+```bash
+poetry add --dev <dependency-name>
+```
+
+In any case, dependency changes will also show up in the `poetry.lock` file. This file is used to ensure that all developers are using the same versions of the dependencies. Consequently, it is good practice and actually recommended that this file is committed to version control.
+
+### **The `pyproject.toml` Configuration**
+
+The `pyproject.toml` file is used to configure the project by managing dependencies and configuring poetry itself. It is also used to configure additional behaviours for linting and testing - essentially acting as a configuration file for the dependencies used in the project. For example, the `pyproject.toml` file in this project is used to configure the following:
+* The Python version 
+* The project name
+* What profile `isort` should use
+* What sources `bandit` should analyze
+* etc.
+
 ## **Pylint & DSLinter**
 
 Pylint and DSLinter have been used and configured to ensure the code quality. All configuration options can be found in `.pylintrc`. This configuration file is based on [this example from the DSLinter documentation](https://github.com/SERG-Delft/dslinter/blob/main/docs/pylint-configuration-examples/pylintrc-for-ml-projects/.pylintrc). Besides this, there are a few custom changes, such as adding the variable names `X_train`, `X_test` etc. to the list of accepted variable names by Pylint, as these variable names are commonly used in ML applications. The `init_hook` variable in `.pylintrc` is also set to the path of this directory, in order to ensure that all imports within the code do not result in a warning from Pylint.
@@ -93,4 +110,46 @@ If you would like to manually verify the code quality, please run the following 
 poetry run pylint src
 ```
 
-DSLinter is configured and will automatically run. This should return a perfect score of 10.00. A report summarising the findings can be found in `data/reports/`. 
+DSLinter is configured and will automatically run. This should return a perfect score of 10.00. A report summarising the findings can be found in `reports/pylint_report.txt`. 
+
+## **Formatting (isort & black)**
+
+The project uses `isort` and `black` to format the code. `isort` is used to sort the imports in the code, while `black` is used to format the code itself. Both of these tools are configured in `pyproject.toml`.
+
+### **isort**
+
+If you would like to manually format the imports, please run the following command from within the root directory of the project:
+
+```bash
+poetry run isort .
+```
+
+This command will sort the imports in all files in the project. Naturally, you can also specify a specific file or directory to format. You can also check for any rule violations by running the following command:
+
+```bash
+poetry run isort --check-only .
+``` 
+
+> There are many more configuration options, therefore consider looking at the [isort documentation](https://pycqa.github.io/isort/) if you are interested in more information.
+
+### **black**
+
+If you would like to manually format the code, please run the following command from within the root directory of the project:
+
+```bash
+poetry run black .
+```
+
+Similarly, this command will format all files within the project - different files/directories can also be specified. Additionally, if you would only like to check any rule violations, please run the following command:
+
+```bash
+poetry run black --check .
+```
+
+> Again, there are many more configuration options, therefore consider looking at the [black readthedocs page](https://black.readthedocs.io/en/stable/) if you are interested in more information.
+
+## **mllint setup**
+
+We are using the mllint tool to check for common mistakes in ML projects (formatting, tests, general good practice rules). The report that was used in the latest run of the pipeline can be found within `reports/mllint_report.md`.
+
+> Note: The mllint tool combines multiple linters and uses rules for testing, configuration and other topics that are specific to ML projects. You can find the official source code for the tool [here](https://github.com/bvobart/mllint).
