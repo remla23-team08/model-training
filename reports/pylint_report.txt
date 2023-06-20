@@ -1,25 +1,8 @@
-************* Module src.pipeline.training
-src/pipeline/training.py:1:0: R0801: Similar lines in 2 files
-==src.pipeline.load_data:[10:23]
-==src.pipeline.preprocessing:[50:63]
-if __name__ == "__main__":
-    # Specify the relative path to data tsv
-    root_path = os.path.dirname(os.path.abspath(__file__))
-    dataset_path = os.path.join(
-        root_path,
-        "..",
-        "..",
-        "data",
-        "external",
-        "a1_RestaurantReviews_HistoricDump.tsv",
-    )
-
-    # Import the data from external source (duplicate-code)
 
 
 Report
 ======
-100 statements analysed.
+114 statements analysed.
 
 Statistics by type
 ------------------
@@ -27,13 +10,13 @@ Statistics by type
 +---------+-------+-----------+-----------+------------+---------+
 |type     |number |old number |difference |%documented |%badname |
 +=========+=======+===========+===========+============+=========+
-|module   |6      |6          |=          |100.00      |0.00     |
+|module   |7      |7          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |class    |1      |1          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 |method   |3      |3          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
-|function |1      |1          |=          |100.00      |0.00     |
+|function |2      |2          |=          |100.00      |0.00     |
 +---------+-------+-----------+-----------+------------+---------+
 
 
@@ -48,6 +31,7 @@ External dependencies
       \-stem 
         \-porter (src.pipeline.preprocessing)
     pandas (src.pipeline.evaluation,src.pipeline.preprocessing,src.pipeline.training)
+    requests (src.pipeline.load_data)
     sklearn 
       \-feature_extraction 
       | \-text (src.pipeline.training)
@@ -66,13 +50,13 @@ Raw metrics
 +----------+-------+------+---------+-----------+
 |type      |number |%     |previous |difference |
 +==========+=======+======+=========+===========+
-|code      |154    |57.68 |154      |=          |
+|code      |168    |56.19 |163      |+5.00      |
 +----------+-------+------+---------+-----------+
-|docstring |37     |13.86 |37       |=          |
+|docstring |36     |12.04 |36       |=          |
 +----------+-------+------+---------+-----------+
-|comment   |26     |9.74  |26       |=          |
+|comment   |30     |10.03 |27       |+3.00      |
 +----------+-------+------+---------+-----------+
-|empty     |50     |18.73 |50       |=          |
+|empty     |65     |21.74 |63       |+2.00      |
 +----------+-------+------+---------+-----------+
 
 
@@ -98,7 +82,7 @@ Messages by category
 +===========+=======+=========+===========+
 |convention |0      |0        |0          |
 +-----------+-------+---------+-----------+
-|refactor   |1      |1        |1          |
+|refactor   |0      |0        |0          |
 +-----------+-------+---------+-----------+
 |warning    |0      |0        |0          |
 +-----------+-------+---------+-----------+
@@ -110,15 +94,13 @@ Messages by category
 Messages
 --------
 
-+---------------+------------+
-|message id     |occurrences |
-+===============+============+
-|duplicate-code |1           |
-+---------------+------------+
++-----------+------------+
+|message id |occurrences |
++===========+============+
 
 
 
 
-------------------------------------------------------------------
-Your code has been rated at 9.90/10 (previous run: 9.90/10, +0.00)
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
