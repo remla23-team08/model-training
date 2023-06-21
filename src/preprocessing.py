@@ -13,6 +13,7 @@ import nltk  # type: ignore
 import pandas as pd
 from nltk.corpus import stopwords  # type: ignore
 from nltk.stem.porter import PorterStemmer  # type: ignore
+
 from util import get_paths
 
 
@@ -54,7 +55,7 @@ class Preprocessing:
 
 
 if __name__ == "__main__":
-    # Specify the relative path to data tsv
+    # Get relative paths
     root_path, dataset_path = get_paths()
 
     # Load data from file
@@ -67,7 +68,6 @@ if __name__ == "__main__":
 
     preprocess_class = Preprocessing()
     save_corpus = preprocess_class.preprocess_dataset(load_dataset)
-    corpus_path = os.path.join(root_path, "..", "..", "data/processed/corpus.joblib")
-
+    corpus_path = os.path.join(root_path, "..", "data/processed/corpus.joblib")
     joblib.dump(save_corpus, corpus_path)
     logging.info("Processed dataset (corpus) is saved to: %s", corpus_path)

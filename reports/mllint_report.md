@@ -1,16 +1,16 @@
 # ML Project Report
 **Project** | **Details**
 --------|--------
-Date    | Mon, 12 Jun 2023 14:25:13 +0200 
-Path    | `/home/amoraru/Documents/MSc/Q4/REMLA/model-training`
-Config  | `pyproject.toml`
+Date    | Wed, 21 Jun 2023 14:07:31 +0200 
+Path    | `/home/jvandersaag/Documents/REMLA/project/model-training`
+Config  | `.mllint.yml`
 Default | Yes
-Git: Remote URL | `git@github.com:remla23-team08/model-training.git`
-Git: Commit     | `80dc0969aae353303cb3868c51a425f903ba053d`
-Git: Branch     | `feature/improve-code-quality`
+Git: Remote URL | `https://github.com/remla23-team08/model-training.git`
+Git: Commit     | `35e4660ad85087229f7eb187eaeb8f52b5028f25`
+Git: Branch     | `pytest`
 Git: Dirty Workspace?  | Yes
-Number of Python files | 9
-Lines of Python code   | 219
+Number of Python files | 8
+Lines of Python code   | 208
 
 ---
 
@@ -31,23 +31,17 @@ Passed | Score | Weight | Rule | Slug
  | _Total_ | | | 
 ✅ | **100.0**% | | Version Control | `version-control`
 
-### Dependency Management (`dependency-management`) — **66.7**%
+### Dependency Management (`dependency-management`) — **100.0**%
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
 ✅ | 100.0% | 1 | Project properly keeps track of its dependencies | `dependency-management/use`
-❌ | 0.0% | 1 | Project should only use one dependency manager | `dependency-management/single`
+✅ | 100.0% | 1 | Project should only use one dependency manager | `dependency-management/single`
 ✅ | 100.0% | 1 | Project places its development dependencies in dev-dependencies | `dependency-management/use-dev`
  | _Total_ | | | 
-❌ | **66.7**% | | Dependency Management | `dependency-management`
+✅ | **100.0**% | | Dependency Management | `dependency-management`
 
-#### Details — Project should only use one dependency manager — ❌
-
-Your project was found to be using multiple dependency managers: [Poetry setup.py]
-
-The `setup.py` in your project is redundant and should be removed, as you can also use Poetry to build your project into a Python package using `poetry build`, see the [Poetry Docs](https://python-poetry.org/docs/libraries/#packaging) to learn more.
-
-### Code Quality (`code-quality`) — **100.0**%
+### Code Quality (`code-quality`) — **87.5**%
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
@@ -55,27 +49,78 @@ Passed | Score | Weight | Rule | Slug
 ✅ | 100.0% | 1 | All code quality linters should be installed in the current environment | `code-quality/linters-installed`
 ✅ | 100.0% | 1 | Pylint reports no issues with this project | `code-quality/pylint/no-issues`
 ✅ | 100.0% | 1 | Pylint is configured for this project | `code-quality/pylint/is-configured`
+❌ | 0.0% | 1 | Mypy reports no issues with this project | `code-quality/mypy/no-issues`
 ✅ | 100.0% | 1 | Black reports no issues with this project | `code-quality/black/no-issues`
 ✅ | 100.0% | 1 | isort reports no issues with this project | `code-quality/isort/no-issues`
 ✅ | 100.0% | 0 | isort is properly configured | `code-quality/isort/is-configured`
 ✅ | 100.0% | 1 | Bandit reports no issues with this project | `code-quality/bandit/no-issues`
  | _Total_ | | | 
-✅ | **100.0**% | | Code Quality | `code-quality`
+❌ | **87.5**% | | Code Quality | `code-quality`
 
 #### Details — Project should use code quality linters — ✅
 
 Hooray, all linters detected:
 
+- Mypy
 - Black
 - isort
 - Bandit
 - Pylint
-- Mypy
 
 
 #### Details — Pylint reports no issues with this project — ✅
 
 Congratulations, Pylint is happy with your project!
+
+#### Details — Mypy reports no issues with this project — ❌
+
+Mypy reported **44** issues with your project:
+
+- `src/util.py:10,1` - Error: Function is missing a return type annotation  [no-untyped-def]
+- `src/load_data.py:12,1` - Error: Library stubs not installed for "requests" (or incompatible with Python 3.8)  [import]
+- `src/load_data.py:12,1` - Note: Hint: "python3 -m pip install types-requests"
+- `src/load_data.py:12,1` - Note: (or run "mypy --install-types" to install all missing stub packages)
+- `src/load_data.py:12,1` - Note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+- `src/load_data.py:14,1` - Error: Cannot find implementation or library stub for module named "util"  [import]
+- `src/load_data.py:37,10` - Error: Incompatible types in assignment (expression has type "ZipFile", variable has type "_TemporaryFileWrapper[bytes]")  [assignment]
+- `src/training.py:15,1` - Error: Cannot find implementation or library stub for module named "util"  [import]
+- `src/training.py:24,15` - Error: No overload variant of "__getitem__" of "DataFrame" matches argument type "slice"  [call-overload]
+- `src/training.py:24,15` - Note: Possible overload variants:
+- `src/training.py:24,15` - Note: def __getitem__(self, str) -> Series[Any]
+- `src/training.py:24,15` - Note: def __getitem__(self, Union[Series[Any], DataFrame, List[str], Index[str], ndarray[Any, Any]]) -> DataFrame
+- `src/preprocessing.py:17,1` - Error: Cannot find implementation or library stub for module named "util"  [import]
+- `src/preprocessing.py:23,5` - Error: Function is missing a return type annotation  [no-untyped-def]
+- `src/preprocessing.py:23,5` - Note: Use "-> None" if function does not return a value
+- `src/preprocessing.py:34,5` - Error: Function is missing a type annotation  [no-untyped-def]
+- `src/preprocessing.py:39,27` - Error: Call to untyped function "preprocess_review" in typed context  [no-untyped-call]
+- `src/preprocessing.py:42,5` - Error: Function is missing a type annotation  [no-untyped-def]
+- `src/preprocessing.py:62,20` - Error: No overload variant of "__getitem__" of "DataFrame" matches argument type "slice"  [call-overload]
+- `src/preprocessing.py:62,20` - Note: Possible overload variants:
+- `src/preprocessing.py:62,20` - Note: def __getitem__(self, str) -> Series[Any]
+- `src/preprocessing.py:62,20` - Note: def __getitem__(self, Union[Series[Any], DataFrame, List[str], Index[str], ndarray[Any, Any]]) -> DataFrame
+- `src/preprocessing.py:69,24` - Error: Call to untyped function "Preprocessing" in typed context  [no-untyped-call]
+- `src/preprocessing.py:70,19` - Error: Call to untyped function "preprocess_dataset" in typed context  [no-untyped-call]
+- `src/evaluation.py:17,1` - Error: Function is missing a type annotation  [no-untyped-def]
+- `src/evaluation.py:54,15` - Error: No overload variant of "__getitem__" of "DataFrame" matches argument type "slice"  [call-overload]
+- `src/evaluation.py:54,15` - Note: Possible overload variants:
+- `src/evaluation.py:54,15` - Note: def __getitem__(self, str) -> Series[Any]
+- `src/evaluation.py:54,15` - Note: def __getitem__(self, Union[Series[Any], DataFrame, List[str], Index[str], ndarray[Any, Any]]) -> DataFrame
+- `src/evaluation.py:77,5` - Error: Call to untyped function "model_eval" in typed context  [no-untyped-call]
+- `tests/test_MLdevel.py:19,1` - Error: Function is missing a return type annotation  [no-untyped-def]
+- `tests/test_MLdevel.py:25,1` - Error: Function is missing a type annotation  [no-untyped-def]
+- `tests/test_MLdevel.py:28,31` - Error: Call to untyped function "get_paths" in typed context  [no-untyped-call]
+- `tests/test_MLdevel.py:32,15` - Error: No overload variant of "__getitem__" of "DataFrame" matches argument type "slice"  [call-overload]
+- `tests/test_MLdevel.py:32,15` - Note: Possible overload variants:
+- `tests/test_MLdevel.py:32,15` - Note: def __getitem__(self, str) -> Series[Any]
+- `tests/test_MLdevel.py:32,15` - Note: def __getitem__(self, Union[Series[Any], DataFrame, List[str], Index[str], ndarray[Any, Any]]) -> DataFrame
+- `tests/test_MLdevel.py:36,15` - Error: No overload variant of "__getitem__" of "DataFrame" matches argument type "slice"  [call-overload]
+- `tests/test_MLdevel.py:36,15` - Note: Possible overload variants:
+- `tests/test_MLdevel.py:36,15` - Note: def __getitem__(self, str) -> Series[Any]
+- `tests/test_MLdevel.py:36,15` - Note: def __getitem__(self, Union[Series[Any], DataFrame, List[str], Index[str], ndarray[Any, Any]]) -> DataFrame
+- `tests/test_MLdevel.py:55,29` - Error: Call to untyped function "model_eval" in typed context  [no-untyped-call]
+- `tests/test_MLdevel.py:59,24` - Error: Call to untyped function "model_eval" in typed context  [no-untyped-call]
+- `tests/test_MLdevel.py:69,5` - Error: Call to untyped function "test_nondeterminism_robustness" in typed context  [no-untyped-call]
+
 
 #### Details — Black reports no issues with this project — ✅
 
@@ -89,22 +134,22 @@ Congratulations, `isort` is happy with your project!
 
 Congratulations, Bandit is happy with your project!
 
-### Testing (`testing`) — **38.9**%
+### Testing (`testing`) — **40.6**%
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
-❌ | 55.6% | 1 | Project has automated tests | `testing/has-tests`
+❌ | 62.5% | 1 | Project has automated tests | `testing/has-tests`
 ❌ | 0.0% | 1 | Project passes all of its automated tests | `testing/pass`
 ❌ | 0.0% | 1 | Project provides a test coverage report | `testing/coverage`
 ✅ | 100.0% | 1 | Tests should be placed in the tests folder | `testing/tests-folder`
  | _Total_ | | | 
-❌ | **38.9**% | | Testing | `testing`
+❌ | **40.6**% | | Testing | `testing`
 
 #### Details — Project has automated tests — ❌
 
 There is **1** test file in your project, which meets the minimum of **1** test file required.
 
-However, this only equates to **11.111111%** of Python files in your project being tests, while `mllint` expects that **20%** of your project's Python files are tests.
+However, this only equates to **12.5%** of Python files in your project being tests, while `mllint` expects that **20%** of your project's Python files are tests.
 
 #### Details — Project passes all of its automated tests — ❌
 
@@ -137,11 +182,4 @@ Passed | Score | Weight | Rule | Slug
 ✅ | 100.0% | 1 | Project uses Continuous Integration (CI) | `ci/use`
  | _Total_ | | | 
 ✅ | **100.0**% | | Continuous Integration | `ci`
-
-## Errors
-
-1 error(s) occurred while analysing your project:
-- ❌ **Code Quality** - 1 error occurred:
-	* Mypy failed to run: failed to parse Mypy message 'tests/test_MLdevel.py:10: error: Unused "type: ignore" comment': error parsing ' error' as column number: strconv.Atoi: parsing " error": invalid syntax
-
 

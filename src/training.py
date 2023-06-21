@@ -12,13 +12,12 @@ from sklearn.feature_extraction.text import CountVectorizer  # type: ignore
 from sklearn.model_selection import train_test_split  # type: ignore
 from sklearn.naive_bayes import GaussianNB  # type: ignore
 
+from util import get_paths
+
 if __name__ == "__main__":
     # Specify the absolute path to corpus and dataset
-    root_path = os.path.dirname(os.path.abspath(__file__))
-    corpus_path = os.path.join(root_path, "..", "..", "data/processed/corpus.joblib")
-    dataset_path = os.path.join(
-        root_path, "..", "..", "data/external/a1_RestaurantReviews_HistoricDump.tsv"
-    )
+    root_path, dataset_path = get_paths()
+    corpus_path = os.path.join(root_path, "..", "data/processed/corpus.joblib")
 
     # Load data
     corpus = joblib.load(corpus_path)
@@ -45,13 +44,9 @@ if __name__ == "__main__":
     # Store model and CV
     joblib.dump(
         classifier,
-        os.path.join(
-            root_path, "..", "..", "data/models/c2_Classifier_Sentiment_Model"
-        ),
+        os.path.join(root_path, "..", "data/models/c2_Classifier_Sentiment_Model"),
     )
     joblib.dump(
         count_vectoriser,
-        os.path.join(
-            root_path, "..", "..", "data", "models", "c1_BoW_Sentiment_Model.pkl"
-        ),
+        os.path.join(root_path, "..", "data", "models", "c1_BoW_Sentiment_Model.pkl"),
     )
