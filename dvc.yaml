@@ -1,44 +1,45 @@
 stages:
   linting:
-    cmd: pylint src
+    cmd: poetry run mllint --output reports/mllint_report.md -f
     deps: 
       - .pylintrc
+      - .mllint.yml
   load_data:
-    cmd: python src/pipeline/load_data.py
+    cmd: python src/load_data.py
     deps:
-    - src/pipeline/load_data.py
+    - src/load_data.py
     outs:
     - data/external/a1_RestaurantReviews_HistoricDump.tsv
     - data/external/a2_RestaurantReviews_FreshDump.tsv
   preprocessing:
-    cmd: python src/pipeline/preprocessing.py
+    cmd: python src/preprocessing.py
     deps:
-    - src/pipeline/preprocessing.py
+    - src/preprocessing.py
     - data/external/a1_RestaurantReviews_HistoricDump.tsv
     outs:
     - data/processed/corpus.joblib
   training:
-    cmd: python src/pipeline/training.py
+    cmd: python src/training.py
     deps:
-    - src/pipeline/training.py
-    - src/pipeline/preprocessing.py
+    - src/training.py
+    - src/preprocessing.py
     - data/external/a1_RestaurantReviews_HistoricDump.tsv
     - data/processed/corpus.joblib
     outs:
     - data/models/c1_BoW_Sentiment_Model.pkl
     - data/models/c2_Classifier_Sentiment_Model
   evaluation:
-    cmd: python src/pipeline/evaluation.py --output reports/model_evaluation.json
+    cmd: python src/evaluation.py --output reports/model_evaluation.json
     deps:
-    - src/pipeline/evaluation.py
-    - src/pipeline/preprocessing.py
+    - src/evaluation.py
+    - src/training.py
     - data/models/c1_BoW_Sentiment_Model.pkl
     - data/models/c2_Classifier_Sentiment_Model
     metrics:
     - reports/model_evaluation.json
-  # testing:
-  #   cmd: pytest
-  #   deps: 
-  #   - src/pipeline/evaluation.py
-  #   - data/models/c1_BoW_Sentiment_Model.pkl
-  #   - data/models/c2_Classifier_Sentiment_Model
+  testing:
+    cmd: pytest --junitxml=reports/tests-report.xml --cov=src --cov-report=xml:reports/coverage-report.xml
+    deps: 
+    - src/evaluation.py
+    - data/models/c1_BoW_Sentiment_Model.pkl
+    - data/models/c2_Classifier_Sentiment_Model

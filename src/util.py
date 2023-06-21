@@ -13,7 +13,6 @@ def get_paths():
     dataset_path = os.path.join(
         root_path,
         "..",
-        "..",
         "data",
         "external",
         "a1_RestaurantReviews_HistoricDump.tsv",

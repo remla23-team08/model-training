@@ -10,6 +10,7 @@ import tempfile
 import zipfile
 
 import requests
+
 from util import get_paths
 
 if __name__ == "__main__":
