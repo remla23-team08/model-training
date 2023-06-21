@@ -8,6 +8,7 @@ Contains the ML training pipeline used for the main project of course CS4295: Re
   - [:scroll: **Pre-requisites**](#scroll-pre-requisites)
   - [:gear: **Poetry Setup**](#gear-poetry-setup)
     - [**Installation (Poetry)**](#installation-poetry)
+    - [**Python Version**](#python-version)
     - [**Installing dependencies**](#installing-dependencies)
     - [**Adding a new dependency**](#adding-a-new-dependency)
     - [**The `pyproject.toml` Configuration**](#the-pyprojecttoml-configuration)
@@ -41,6 +42,16 @@ This project is using Poetry instead of Pip to manage dependencies. Poetry is a 
 ### **Installation (Poetry)**
 
 To install Poetry, please follow the instructions on the [Poetry website](https://python-poetry.org/docs/#installation) and follow the corresponding steps for your operating system.
+
+### **Python Version**
+
+Poetry for this project is configured to using any python version in the range of `3.8.*` to `3.10.*`. If you are using a different version of Python, you need to install a correct version and configure your poetry environment to use it. For example, to use `python3.8` you can run the following command:
+
+```bash
+poetry env use python3.8
+```
+
+> **Note**: The actual python value should be the path to the python executable. If already on the system, while on Linux-based systems, you can directly use `poetry env use $(which python3.8)` to use the correct path. 
 
 ### **Installing dependencies**
 
