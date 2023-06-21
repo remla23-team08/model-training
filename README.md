@@ -1,16 +1,42 @@
 # model-training
 Contains the ML training pipeline used for the main project of course CS4295: Release Engineering for Machine Learning Applications. This pipeline is of an ML model that evaluates restaurant reviews. The repository structure is based off the Cookiecutter template.
 
-## **Pre-requisites**
+## :books: **Tabel of Contents**
 
-* Python = `3.8.*`
+- [model-training](#model-training)
+  - [:books: **Tabel of Contents**](#books-tabel-of-contents)
+  - [:scroll: **Pre-requisites**](#scroll-pre-requisites)
+  - [:gear: **Poetry Setup**](#gear-poetry-setup)
+    - [**Installation (Poetry)**](#installation-poetry)
+    - [**Installing dependencies**](#installing-dependencies)
+    - [**Adding a new dependency**](#adding-a-new-dependency)
+    - [**The `pyproject.toml` Configuration**](#the-pyprojecttoml-configuration)
+  - [:rocket: **Pipeline Usage**](#rocket-pipeline-usage)
+    - [**Remote**](#remote)
+    - [**Testing**](#testing)
+    - [**Metrics**](#metrics)
+    - [**Dataset**](#dataset)
+    - [**Preprocessing**](#preprocessing)
+    - [**Storing the trained model**](#storing-the-trained-model)
+  - [:clipboard: **Linting**](#clipboard-linting)
+  - [**Formatting (isort \& black)**](#formatting-isort--black)
+    - [**isort**](#isort)
+    - [**black**](#black)
+
+## :scroll: **Pre-requisites**
+
+* Python >= `3.8.*` or <= `3.10.*`
+  * Installation varies per python version and OS. Please refer to the [Python website](https://www.python.org/downloads/) for more details.
 * Poetry
+  * Refer to the [Installation (Poetry)](#installation-poetry) section for more details
+* DVC 
+  * See installation instructions [here](https://dvc.org/doc/install)
 
 This project is using Poetry instead of Pip to manage dependencies. Poetry is a Python dependency management tool that simplifies the process of managing dependencies and packaging. Additionally, Poetry is also used to manage the virtual environment from which the project is run, thus not requiring the user to manually create a virtual environment. As such, make sure you have poetry installed before proceeding with the next sections. 
 
-> If you are not familiar with Poetry, you can find additional details about the setup by referring to the [Poetry Setup](#petry-setup) section.
+> **Note:** If you are not familiar with Poetry, you can find additional details about the setup by referring to the [Poetry Setup](#poetry-setup) section. If you have experience with it, you can skip this section by going directly to the [Pipeline Usage](#pipeline-usage) section.
 
-## **Poetry Setup**
+## :gear: **Poetry Setup**
 
 ### **Installation (Poetry)**
 
@@ -52,7 +78,7 @@ The `pyproject.toml` file is used to configure the project by managing dependenc
 * What sources `bandit` should analyze
 * etc.
 
-## **Pipeline Usage**
+## :rocket: **Pipeline Usage**
 
 In order to run the pipeline, ensure that you have `dvc` installed and run the following command:
 
@@ -60,12 +86,21 @@ In order to run the pipeline, ensure that you have `dvc` installed and run the f
 poetry run dvc exp run
 ```
 
-This will automatically download the dataset from an external source, pre-process the dataset, train the model and save the evaluation results in `reports/model_evaluation.json`. Tests will also automatically be ran. Linting via Pylint and DSLinter is also automatically run as part of the pipeline.
+Alternatively, you can also run the following command:
+  
+```bash
+poetry run dvc repro
+```
+
+Both of these commands will automatically download the dataset from an external source, pre-process the dataset, train the model and save the evaluation results in `reports/model_evaluation.json`. Tests will also automatically be ran. Linting via Pylint and DSLinter is also automatically run as part of the pipeline.
+
+> **Note**: The aforementioned commands will produce reports in the `reports/` folder. Some of these reports relate to the testing phase, namely the `tests-report.xml` and `coverage-report.xml`, whereas the rest relate to `mllint` and `pylint` scores. 
 
 To view a graphical representation of the pipeline, run the following command:
 ``` bash
 poetry run dvc dag
 ```
+
 ### **Remote**
 
 A Google drive folder has been configured to be used as remote storage.
@@ -101,7 +136,7 @@ Any preprocessing steps can be found in `preprocessing.py`. These are executed a
 
 The trained model is stored in `data/models/`.
 
-## **Linting**
+## :clipboard: **Linting**
 We are using the mllint tool to check for common mistakes in ML projects (formatting, tests, general good practice rules). The report that was used in the latest run of the pipeline can be found within `reports/mllint_report.md`.
 
 > Note: The mllint tool combines multiple linters and uses rules for testing, configuration and other topics that are specific to ML projects. You can find the official source code for the tool [here](https://github.com/bvobart/mllint).
