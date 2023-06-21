@@ -19,7 +19,7 @@ Contains the ML training pipeline used for the main project of course CS4295: Re
     - [**Preprocessing**](#preprocessing)
     - [**Storing the trained model**](#storing-the-trained-model)
   - [:clipboard: **Linting**](#clipboard-linting)
-  - [**Formatting (isort \& black)**](#formatting-isort--black)
+  - [:art: **Formatting (isort \& black)**](#art-formatting-isort--black)
     - [**isort**](#isort)
     - [**black**](#black)
 
@@ -152,7 +152,7 @@ poetry run mllint
 This will run mllint, which includes several linters. DSLinter is configured and will automatically run. This should return a perfect score of 10.00. A report summarising the findings can be found in `reports/mllint_report.md`. 
 
 
-## **Formatting (isort & black)**
+## :art: **Formatting (isort & black)**
 
 The project uses `isort` and `black` to format the code. `isort` is used to sort the imports in the code, while `black` is used to format the code itself. Both of these tools are configured in `pyproject.toml`.
 
