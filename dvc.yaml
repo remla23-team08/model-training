@@ -32,13 +32,13 @@ stages:
     cmd: python src/evaluation.py --output reports/model_evaluation.json
     deps:
     - src/evaluation.py
-    - src/preprocessing.py
+    - src/training.py
     - data/models/c1_BoW_Sentiment_Model.pkl
     - data/models/c2_Classifier_Sentiment_Model
     metrics:
     - reports/model_evaluation.json
   testing:
-    cmd: pytest
+    cmd: pytest --junitxml=reports/tests-report.xml --cov=src --cov-report=xml:reports/coverage-report.xml
     deps: 
     - src/evaluation.py
     - data/models/c1_BoW_Sentiment_Model.pkl

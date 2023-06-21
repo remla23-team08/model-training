@@ -54,7 +54,7 @@ stages:
     outs:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
       hash: md5
-      md5: 748c7462deef6170f799e03b7c9d73e9
+      md5: 56de4cbccf6bb971bd1e4287edfab481
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       hash: md5
@@ -65,8 +65,8 @@ stages:
     deps:
     - path: .mllint.yml
       hash: md5
-      md5: 4ea934dfba288af42e1a76f118e2da33
-      size: 363
+      md5: ce689fd22680c18b78a5b0fa4331a837
+      size: 399
     - path: .pylintrc
       hash: md5
       md5: 52dbd5f66aee62bfa1f8b3e78da7761e
@@ -76,7 +76,7 @@ stages:
     deps:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
       hash: md5
-      md5: 748c7462deef6170f799e03b7c9d73e9
+      md5: 56de4cbccf6bb971bd1e4287edfab481
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       hash: md5
@@ -86,21 +86,21 @@ stages:
       hash: md5
       md5: fc283dc021ea2b5dac7a66fe821545b8
       size: 2275
-    - path: src/preprocessing.py
+    - path: src/training.py
       hash: md5
-      md5: e621a234373e83d8accf1b436b8c4b35
-      size: 2063
+      md5: 61ec4877287cb51075c81360cf5e0d81
+      size: 1533
     outs:
     - path: reports/model_evaluation.json
       hash: md5
       md5: f731c8ac8061065b79f6492438a0cf93
       size: 75
   testing:
-    cmd: pytest
+    cmd: pytest --junitxml=reports/tests-report.xml --cov=src --cov-report=xml:reports/coverage-report.xml
     deps:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
       hash: md5
-      md5: 748c7462deef6170f799e03b7c9d73e9
+      md5: 56de4cbccf6bb971bd1e4287edfab481
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       hash: md5

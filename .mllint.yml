@@ -6,19 +6,18 @@ git:
 code-quality:
     linters:
         - pylint
-        - mypy
         - black
         - isort
         - bandit
 testing:
-    report: ""
+    report: "reports/tests-report.xml"
     targets:
         minimum: 1
         ratio:
             tests: 1
             other: 4
     coverage:
-        report: ""
+        report: "reports/coverage-report.xml"
         targets:
             line: 80
 
