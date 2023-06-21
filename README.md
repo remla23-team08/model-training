@@ -51,7 +51,7 @@ Poetry for this project is configured to using any python version in the range o
 poetry env use python3.8
 ```
 
-> **Note**: The actual python value should be the path to the python executable. If already on the system, while on Linux-based systems, you can directly use `poetry env use $(which python3.8)` to use the correct path. 
+> **Note**: The actual python value should be the path to the python executable (if not already on the `$PATH`). If already on the system, while on Linux-based systems, you can directly use `poetry env use $(which python3.8)` to use the correct path. If you installed the python binary in a different location, you must use the correct path to the executable.
 
 ### **Installing dependencies**
 
