@@ -5,7 +5,6 @@ Contains the ML training pipeline used for the main project of course CS4295: Re
 
 * Python = `3.8.*`
 * Poetry
-* DVC
 
 This project is using Poetry instead of Pip to manage dependencies. Poetry is a Python dependency management tool that simplifies the process of managing dependencies and packaging. Additionally, Poetry is also used to manage the virtual environment from which the project is run, thus not requiring the user to manually create a virtual environment. As such, make sure you have poetry installed before proceeding with the next sections. 
 
@@ -78,6 +77,8 @@ In order to test the ML pipeline, several tests are performed which can be found
 ```bash
 poetry run pytest
 ```
+
+The coverage report and test report are both found in the `reports/` folder.
 
 ### **Metrics**
 
