@@ -1,20 +1,57 @@
 # model-training
 Contains the ML training pipeline used for the main project of course CS4295: Release Engineering for Machine Learning Applications. This pipeline is of an ML model that evaluates restaurant reviews. The repository structure is based off the Cookiecutter template.
 
-## **Pre-requisites**
+## :books: **Tabel of Contents**
 
-* Python = `3.8.*`
+- [model-training](#model-training)
+  - [:books: **Tabel of Contents**](#books-tabel-of-contents)
+  - [:scroll: **Pre-requisites**](#scroll-pre-requisites)
+  - [:gear: **Poetry Setup**](#gear-poetry-setup)
+    - [**Installation (Poetry)**](#installation-poetry)
+    - [**Python Version**](#python-version)
+    - [**Installing dependencies**](#installing-dependencies)
+    - [**Adding a new dependency**](#adding-a-new-dependency)
+    - [**The `pyproject.toml` Configuration**](#the-pyprojecttoml-configuration)
+  - [:rocket: **Pipeline Usage**](#rocket-pipeline-usage)
+    - [**Remote**](#remote)
+    - [**Testing**](#testing)
+    - [**Metrics**](#metrics)
+    - [**Dataset**](#dataset)
+    - [**Preprocessing**](#preprocessing)
+    - [**Storing the trained model**](#storing-the-trained-model)
+  - [:clipboard: **Linting**](#clipboard-linting)
+  - [:art: **Formatting (isort \& black)**](#art-formatting-isort--black)
+    - [**isort**](#isort)
+    - [**black**](#black)
+
+## :scroll: **Pre-requisites**
+
+* Python >= `3.8.*` or <= `3.10.*`
+  * Installation varies per python version and OS. Please refer to the [Python website](https://www.python.org/downloads/) for more details.
 * Poetry
+  * Refer to the [Installation (Poetry)](#installation-poetry) section for more details
+* DVC 
+  * See installation instructions [here](https://dvc.org/doc/install)
 
 This project is using Poetry instead of Pip to manage dependencies. Poetry is a Python dependency management tool that simplifies the process of managing dependencies and packaging. Additionally, Poetry is also used to manage the virtual environment from which the project is run, thus not requiring the user to manually create a virtual environment. As such, make sure you have poetry installed before proceeding with the next sections. 
 
-> If you are not familiar with Poetry, you can find additional details about the setup by referring to the [Poetry Setup](#petry-setup) section.
+> **Note:** If you are not familiar with Poetry, you can find additional details about the setup by referring to the [Poetry Setup](#poetry-setup) section. If you have experience with it, you can skip this section by going directly to the [Pipeline Usage](#pipeline-usage) section.
 
-## **Poetry Setup**
+## :gear: **Poetry Setup**
 
 ### **Installation (Poetry)**
 
 To install Poetry, please follow the instructions on the [Poetry website](https://python-poetry.org/docs/#installation) and follow the corresponding steps for your operating system.
+
+### **Python Version**
+
+Poetry for this project is configured to using any python version in the range of `3.8.*` to `3.10.*`. If you are using a different version of Python, you need to install a correct version and configure your poetry environment to use it. For example, to use `python3.8` you can run the following command:
+
+```bash
+poetry env use python3.8
+```
+
+> **Note**: The actual python value should be the path to the python executable (if not already on the `$PATH`). If already on the system, while on Linux-based systems, you can directly use `poetry env use $(which python3.8)` to use the correct path. If you installed the python binary in a different location, you must use the correct path to the executable.
 
 ### **Installing dependencies**
 
@@ -52,7 +89,7 @@ The `pyproject.toml` file is used to configure the project by managing dependenc
 * What sources `bandit` should analyze
 * etc.
 
-## **Pipeline Usage**
+## :rocket: **Pipeline Usage**
 
 In order to run the pipeline, ensure that you have `dvc` installed and run the following command:
 
@@ -60,12 +97,21 @@ In order to run the pipeline, ensure that you have `dvc` installed and run the f
 poetry run dvc exp run
 ```
 
-This will automatically download the dataset from an external source, pre-process the dataset, train the model and save the evaluation results in `reports/model_evaluation.json`. Tests will also automatically be ran. Linting via Pylint and DSLinter is also automatically run as part of the pipeline.
+Alternatively, you can also run the following command:
+  
+```bash
+poetry run dvc repro
+```
+
+Both of these commands will automatically download the dataset from an external source, pre-process the dataset, train the model and save the evaluation results in `reports/model_evaluation.json`. Tests will also automatically be ran. Linting via Pylint and DSLinter is also automatically run as part of the pipeline.
+
+> **Note**: The aforementioned commands will produce reports in the `reports/` folder. Some of these reports relate to the testing phase, namely the `tests-report.xml` and `coverage-report.xml`, whereas the rest relate to `mllint` and `pylint` scores. 
 
 To view a graphical representation of the pipeline, run the following command:
 ``` bash
 poetry run dvc dag
 ```
+
 ### **Remote**
 
 A Google drive folder has been configured to be used as remote storage.
@@ -101,7 +147,7 @@ Any preprocessing steps can be found in `preprocessing.py`. These are executed a
 
 The trained model is stored in `data/models/`.
 
-## **Linting**
+## :clipboard: **Linting**
 We are using the mllint tool to check for common mistakes in ML projects (formatting, tests, general good practice rules). The report that was used in the latest run of the pipeline can be found within `reports/mllint_report.md`.
 
 > Note: The mllint tool combines multiple linters and uses rules for testing, configuration and other topics that are specific to ML projects. You can find the official source code for the tool [here](https://github.com/bvobart/mllint).
@@ -117,7 +163,7 @@ poetry run mllint
 This will run mllint, which includes several linters. DSLinter is configured and will automatically run. This should return a perfect score of 10.00. A report summarising the findings can be found in `reports/mllint_report.md`. 
 
 
-## **Formatting (isort & black)**
+## :art: **Formatting (isort & black)**
 
 The project uses `isort` and `black` to format the code. `isort` is used to sort the imports in the code, while `black` is used to format the code itself. Both of these tools are configured in `pyproject.toml`.
 
