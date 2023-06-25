@@ -2,8 +2,8 @@ name: Pull Request Validation Pipeline
 on: [pull_request]
 
 jobs:
-  pr-validation:
-    name: Pull Request Validation
+  code-quality-validation:
+    name: Code Quality Validation
     runs-on: ubuntu-22.04
     steps:
       - name: Generate GitHub App Token
