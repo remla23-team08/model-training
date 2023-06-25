@@ -4,9 +4,9 @@
 Evaluate the model and return results
 """
 
+import os
 import json
 import logging
-import os
 
 import joblib  # type: ignore
 import pandas as pd
