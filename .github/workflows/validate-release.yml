@@ -1,9 +1,10 @@
-name: Release Pipeline
+name: Validation & Release Workflow
 
 on:
   push:
     branches:
       - main
+  pull_request:
 
 jobs:
   code-quality-validation:
@@ -39,10 +40,15 @@ jobs:
           poetry install
           poetry check
       
-      - name: Check pylint
+      - name: Check Vanilla pylint
         run: |
           set -e # fail on error
           poetry run pylint -j 0 --fail-under=10.0 src
+
+      - name: Check pylint with DSLinter
+        run: |
+          set -e # fail on error
+          poetry run pylint -j 0 --load-plugins=dslinter --fail-under=10.0 src
       
       - name: Check isort
         run: |
@@ -58,6 +64,7 @@ jobs:
     name: Tag & Release
     runs-on: ubuntu-22.04
     needs: code-quality-validation
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Generate GitHub App Token
         id: generate_github_app_token
