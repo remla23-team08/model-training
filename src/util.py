@@ -1,5 +1,3 @@
-#! /usr/bin/env
-
 """
 This file contains utility functions for the pipeline (for reusability).
 """

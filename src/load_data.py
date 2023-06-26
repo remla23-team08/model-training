@@ -1,5 +1,3 @@
-# #! /usr/bin/env
-
 """
 This script loads data from the dataset_path into a pandas dataset.
 """
