@@ -1,5 +1,3 @@
-#! /usr/bin/env
-
 """
 This file contains functions related to preprocessing of any data provided to the model
 """
@@ -33,7 +31,6 @@ class Preprocessing:
 
     def preprocess_dataset(self, dataset):
         """Loop over entire dataset to preprocess"""
-
         corpus = []
         for i in range(0, len(dataset)):
             corpus.append(self.preprocess_review(dataset["Review"][i]))

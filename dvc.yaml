@@ -2,8 +2,8 @@ stages:
   linting:
     cmd: poetry run mllint --output reports/mllint_report.md -f
     deps: 
-      - .pylintrc
-      - .mllint.yml
+    - .pylintrc
+    - .mllint.yml
   load_data:
     cmd: python src/load_data.py
     deps:
