@@ -10,10 +10,10 @@ import pytest
 
 from src.util import get_paths
 
-
 root_path, dataset_path = get_paths()
 
-@pytest.fixture(name="trained_model")
+
+@pytest.fixture(name="classifier")
 def trained_model():
     """Loads trained model"""
     classifier_path = os.path.join(
@@ -22,7 +22,8 @@ def trained_model():
     classifier = joblib.load(classifier_path)
     yield classifier
 
-@pytest.fixture(name="dataset")
+
+@pytest.fixture(name="d_set")
 def dataset():
     """Loads dataset"""
     d_set = pd.read_csv(
@@ -30,14 +31,16 @@ def dataset():
     )[:]
     yield d_set
 
-@pytest.fixture(name="corpus")
+
+@pytest.fixture(name="crps")
 def corpus():
     """Loads corpus"""
     crps_path = os.path.join(root_path, "..", "data/processed/corpus.joblib")
     crps = joblib.load(crps_path)
     yield crps
 
-@pytest.fixture(name="count_vectoriser")
+
+@pytest.fixture(name="cv")
 def count_vectoriser():
     """Loads count vectoriser"""
     cv = joblib.load(
@@ -45,9 +48,23 @@ def count_vectoriser():
     )
     yield cv
 
+
 @pytest.fixture(name="test_data")
 def test_data():
     """Loads test data"""
-    tst_data = joblib.load(os.path.join(root_path, "../data/processed/test_data.joblib"))
+    tst_data = joblib.load(
+        os.path.join(root_path, "../data/processed/test_data.joblib")
+    )
     yield tst_data
 
+
+@pytest.fixture(name="X")
+def X(crps, cv):
+    """Loads full X features"""
+    return cv.transform(crps).toarray()
+
+
+@pytest.fixture(name="y")
+def y(d_set):
+    """Loads full y class labels"""
+    return d_set.iloc[:, -1].values
