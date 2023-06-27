@@ -54,7 +54,7 @@ stages:
     outs:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
       hash: md5
-      md5: 778e8e9a02ebb5c225cef5afc4c8826b
+      md5: 8f65f22eed5c5f896795fa15c0255e1c
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       hash: md5
@@ -76,7 +76,7 @@ stages:
     deps:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
       hash: md5
-      md5: 778e8e9a02ebb5c225cef5afc4c8826b
+      md5: 8f65f22eed5c5f896795fa15c0255e1c
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       hash: md5
@@ -100,7 +100,7 @@ stages:
     deps:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
       hash: md5
-      md5: 778e8e9a02ebb5c225cef5afc4c8826b
+      md5: 8f65f22eed5c5f896795fa15c0255e1c
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       hash: md5
