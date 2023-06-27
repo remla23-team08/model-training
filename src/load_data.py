@@ -1,5 +1,3 @@
-# #! /usr/bin/env
-
 """
 This script loads data from the dataset_path into a pandas dataset.
 """
@@ -10,6 +8,7 @@ import tempfile
 import zipfile
 
 import requests
+
 from util import get_paths
 
 if __name__ == "__main__":

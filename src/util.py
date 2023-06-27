@@ -1,5 +1,3 @@
-#! /usr/bin/env
-
 """
 This file contains utility functions for the pipeline (for reusability).
 """
@@ -12,7 +10,6 @@ def get_paths():
     root_path = os.path.dirname(os.path.abspath(__file__))
     dataset_path = os.path.join(
         root_path,
-        "..",
         "..",
         "data",
         "external",

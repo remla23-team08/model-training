@@ -1,16 +1,16 @@
 # ML Project Report
 **Project** | **Details**
 --------|--------
-Date    | Mon, 12 Jun 2023 14:25:13 +0200 
-Path    | `/home/amoraru/Documents/MSc/Q4/REMLA/model-training`
-Config  | `pyproject.toml`
-Default | Yes
-Git: Remote URL | `git@github.com:remla23-team08/model-training.git`
-Git: Commit     | `80dc0969aae353303cb3868c51a425f903ba053d`
-Git: Branch     | `feature/improve-code-quality`
+Date    | Mon, 26 Jun 2023 18:20:01 +0200 
+Path    | `/home/jvandersaag/Documents/REMLA/project/model-training`
+Config  | `.mllint.yml`
+Default | No
+Git: Remote URL | `https://github.com/remla23-team08/model-training.git`
+Git: Commit     | `f0c2bbadefd41a4d93dafe5edae6efbd8a25c6a2`
+Git: Branch     | `testing`
 Git: Dirty Workspace?  | Yes
-Number of Python files | 9
-Lines of Python code   | 219
+Number of Python files | 12
+Lines of Python code   | 286
 
 ---
 
@@ -31,21 +31,15 @@ Passed | Score | Weight | Rule | Slug
  | _Total_ | | | 
 ✅ | **100.0**% | | Version Control | `version-control`
 
-### Dependency Management (`dependency-management`) — **66.7**%
+### Dependency Management (`dependency-management`) — **100.0**%
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
 ✅ | 100.0% | 1 | Project properly keeps track of its dependencies | `dependency-management/use`
-❌ | 0.0% | 1 | Project should only use one dependency manager | `dependency-management/single`
+✅ | 100.0% | 1 | Project should only use one dependency manager | `dependency-management/single`
 ✅ | 100.0% | 1 | Project places its development dependencies in dev-dependencies | `dependency-management/use-dev`
  | _Total_ | | | 
-❌ | **66.7**% | | Dependency Management | `dependency-management`
-
-#### Details — Project should only use one dependency manager — ❌
-
-Your project was found to be using multiple dependency managers: [Poetry setup.py]
-
-The `setup.py` in your project is redundant and should be removed, as you can also use Poetry to build your project into a Python package using `poetry build`, see the [Poetry Docs](https://python-poetry.org/docs/libraries/#packaging) to learn more.
+✅ | **100.0**% | | Dependency Management | `dependency-management`
 
 ### Code Quality (`code-quality`) — **100.0**%
 
@@ -66,11 +60,11 @@ Passed | Score | Weight | Rule | Slug
 
 Hooray, all linters detected:
 
+- Pylint
+- Mypy
 - Black
 - isort
 - Bandit
-- Pylint
-- Mypy
 
 
 #### Details — Pylint reports no issues with this project — ✅
@@ -89,46 +83,30 @@ Congratulations, `isort` is happy with your project!
 
 Congratulations, Bandit is happy with your project!
 
-### Testing (`testing`) — **38.9**%
+### Testing (`testing`) — **83.2**%
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
-❌ | 55.6% | 1 | Project has automated tests | `testing/has-tests`
-❌ | 0.0% | 1 | Project passes all of its automated tests | `testing/pass`
-❌ | 0.0% | 1 | Project provides a test coverage report | `testing/coverage`
+✅ | 100.0% | 1 | Project has automated tests | `testing/has-tests`
+✅ | 100.0% | 1 | Project passes all of its automated tests | `testing/pass`
+❌ | 32.7% | 1 | Project provides a test coverage report | `testing/coverage`
 ✅ | 100.0% | 1 | Tests should be placed in the tests folder | `testing/tests-folder`
  | _Total_ | | | 
-❌ | **38.9**% | | Testing | `testing`
+❌ | **83.2**% | | Testing | `testing`
 
-#### Details — Project has automated tests — ❌
+#### Details — Project has automated tests — ✅
 
-There is **1** test file in your project, which meets the minimum of **1** test file required.
+Great! Your project contains **4** test files, which meets the minimum of **1** test files required.
 
-However, this only equates to **11.111111%** of Python files in your project being tests, while `mllint` expects that **20%** of your project's Python files are tests.
+This equates to **33.333333%** of Python files in your project being tests, which meets the target ratio of **20%**
 
-#### Details — Project passes all of its automated tests — ❌
+#### Details — Project passes all of its automated tests — ✅
 
-No test report was provided.
-
-Please update the `testing.report` setting in your project's `mllint` configuration to specify the path to your project's test report.
-
-When using `pytest` to run your project's tests, use the `--junitxml=<filename>` option to generate such a test report, e.g.:
-```sh
-pytest --junitxml=tests-report.xml
-```
-
+Congratulations, all **7** tests in your project passed!
 
 #### Details — Project provides a test coverage report — ❌
 
-No test coverage report was provided.
-
-Please update the `testing.coverage.report` setting in your project's `mllint` configuration to specify the path to your project's test coverage report.
-
-Generating a test coverage report with `pytest` can be done by adding and installing `pytest-cov` as a development dependency of your project. Then use the following command to run your tests and generate both a test report as well as a coverage report:
-```sh
-pytest --junitxml=tests-report.xml --cov=path_to_package_under_test --cov-report=xml
-```
-
+Your project's tests achieved **26.1%** line test coverage, but **80.0%** is the target amount of test coverage to beat. You'll need to further improve your tests.
 
 ### Continuous Integration (`ci`) — **100.0**%
 
@@ -137,11 +115,4 @@ Passed | Score | Weight | Rule | Slug
 ✅ | 100.0% | 1 | Project uses Continuous Integration (CI) | `ci/use`
  | _Total_ | | | 
 ✅ | **100.0**% | | Continuous Integration | `ci`
-
-## Errors
-
-1 error(s) occurred while analysing your project:
-- ❌ **Code Quality** - 1 error occurred:
-	* Mypy failed to run: failed to parse Mypy message 'tests/test_MLdevel.py:10: error: Unused "type: ignore" comment': error parsing ' error' as column number: strconv.Atoi: parsing " error": invalid syntax
-
 

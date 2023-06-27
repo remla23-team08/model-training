@@ -1,5 +1,3 @@
-#! /usr/bin/env
-
 """
 This file contains functions related to preprocessing of any data provided to the model
 """
@@ -13,6 +11,7 @@ import nltk  # type: ignore
 import pandas as pd
 from nltk.corpus import stopwords  # type: ignore
 from nltk.stem.porter import PorterStemmer  # type: ignore
+
 from util import get_paths
 
 
@@ -32,7 +31,6 @@ class Preprocessing:
 
     def preprocess_dataset(self, dataset):
         """Loop over entire dataset to preprocess"""
-
         corpus = []
         for i in range(0, len(dataset)):
             corpus.append(self.preprocess_review(dataset["Review"][i]))
@@ -54,7 +52,7 @@ class Preprocessing:
 
 
 if __name__ == "__main__":
-    # Specify the relative path to data tsv
+    # Get relative paths
     root_path, dataset_path = get_paths()
 
     # Load data from file
@@ -67,7 +65,6 @@ if __name__ == "__main__":
 
     preprocess_class = Preprocessing()
     save_corpus = preprocess_class.preprocess_dataset(load_dataset)
-    corpus_path = os.path.join(root_path, "..", "..", "data/processed/corpus.joblib")
-
+    corpus_path = os.path.join(root_path, "..", "data/processed/corpus.joblib")
     joblib.dump(save_corpus, corpus_path)
     logging.info("Processed dataset (corpus) is saved to: %s", corpus_path)

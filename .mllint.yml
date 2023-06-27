@@ -1,0 +1,23 @@
+rules:
+    disabled: []
+    custom: []
+git:
+    maxFileSize: 10000000
+code-quality:
+    linters:
+        - pylint
+        - black
+        - isort
+        - bandit
+testing:
+    report: "reports/tests-report.xml"
+    targets:
+        minimum: 1
+        ratio:
+            tests: 1
+            other: 4
+    coverage:
+        report: "reports/coverage-report.xml"
+        targets:
+            line: 80
+
