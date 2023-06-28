@@ -1,13 +1,13 @@
 # ML Project Report
 **Project** | **Details**
 --------|--------
-Date    | Mon, 26 Jun 2023 18:20:01 +0200 
+Date    | Tue, 27 Jun 2023 15:29:22 +0200 
 Path    | `/home/jvandersaag/Documents/REMLA/project/model-training`
 Config  | `.mllint.yml`
 Default | No
 Git: Remote URL | `https://github.com/remla23-team08/model-training.git`
-Git: Commit     | `f0c2bbadefd41a4d93dafe5edae6efbd8a25c6a2`
-Git: Branch     | `testing`
+Git: Commit     | `be98a5f0138ff205a06241261f33686bd37a8834`
+Git: Branch     | `fixture_fix`
 Git: Dirty Workspace?  | Yes
 Number of Python files | 12
 Lines of Python code   | 286
@@ -102,7 +102,7 @@ This equates to **33.333333%** of Python files in your project being tests, whic
 
 #### Details — Project passes all of its automated tests — ✅
 
-Congratulations, all **7** tests in your project passed!
+Congratulations, all **9** tests in your project passed!
 
 #### Details — Project provides a test coverage report — ❌
 

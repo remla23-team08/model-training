@@ -13,8 +13,8 @@ from src.util import get_paths
 root_path, dataset_path = get_paths()
 
 
-@pytest.fixture(name="classifier")
-def trained_model():
+@pytest.fixture(name="trained_model")
+def trained_model_():
     """Loads trained model"""
     classifier_path = os.path.join(
         root_path, "..", "data/models/c2_Classifier_Sentiment_Model"
@@ -23,8 +23,8 @@ def trained_model():
     yield classifier
 
 
-@pytest.fixture(name="d_set")
-def dataset():
+@pytest.fixture(name="dataset")
+def dataset_():
     """Loads dataset"""
     d_set = pd.read_csv(
         dataset_path, delimiter="\t", quoting=3, dtype={"Review": object, "Liked": int}
@@ -32,16 +32,16 @@ def dataset():
     yield d_set
 
 
-@pytest.fixture(name="crps")
-def corpus():
+@pytest.fixture(name="corpus")
+def corpus_():
     """Loads corpus"""
     crps_path = os.path.join(root_path, "..", "data/processed/corpus.joblib")
     crps = joblib.load(crps_path)
     yield crps
 
 
-@pytest.fixture(name="cv")
-def count_vectoriser():
+@pytest.fixture(name="count_vectoriser")
+def count_vectoriser_():
     """Loads count vectoriser"""
     cv = joblib.load(
         os.path.join(root_path, "..", "data", "models", "c1_BoW_Sentiment_Model.pkl")
@@ -59,12 +59,12 @@ def test_data():
 
 
 @pytest.fixture(name="X")
-def X(crps, cv):
+def X(corpus, count_vectoriser):
     """Loads full X features"""
-    return cv.transform(crps).toarray()
+    return count_vectoriser.transform(corpus).toarray()
 
 
 @pytest.fixture(name="y")
-def y(d_set):
+def y(dataset):
     """Loads full y class labels"""
-    return d_set.iloc[:, -1].values
+    return dataset.iloc[:, -1].values
