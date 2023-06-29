@@ -11,7 +11,7 @@ numpy = "^1.21.2"
 joblib = "^1.1.1"
 nltk = "^3.8.1"
 scikit-learn = "^1.2.2"
-setuptools = "^45.2.0"
+setuptools = "^68.0.0"
 pandas = "^2.0.2"
 libpython = {git = "https://github.com/remla23-team08/libpython"}
 
