@@ -20,7 +20,7 @@ def test_nondeterminism_robustness(trained_model, X, y):
     for state in [1, 2]:  # Comparitive score
         new_model = train_model(X_train, y_train, state=state)
         score, _ = model_eval(new_model, X_test, y_test)
-        if abs(base_score - score) > 0.2:
+        if abs(base_score - score) > 0.01:
             raise AssertionError(
                 f"Model score is not robust to nondeterminism. "
                 f"Base score: {base_score}, "
