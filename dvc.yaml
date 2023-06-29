@@ -22,7 +22,6 @@ stages:
     cmd: python src/training.py
     deps:
     - src/training.py
-    - src/preprocessing.py
     - data/external/a1_RestaurantReviews_HistoricDump.tsv
     - data/processed/corpus.joblib
     outs:
@@ -32,8 +31,6 @@ stages:
     cmd: python src/evaluation.py --output reports/model_evaluation.json
     deps:
     - src/evaluation.py
-    - src/training.py
-    - data/models/c1_BoW_Sentiment_Model.pkl
     - data/models/c2_Classifier_Sentiment_Model
     metrics:
     - reports/model_evaluation.json

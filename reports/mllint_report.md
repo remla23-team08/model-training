@@ -1,13 +1,13 @@
 # ML Project Report
 **Project** | **Details**
 --------|--------
-Date    | Tue, 27 Jun 2023 15:29:22 +0200 
+Date    | Thu, 29 Jun 2023 17:00:24 +0200 
 Path    | `/home/jvandersaag/Documents/REMLA/project/model-training`
 Config  | `.mllint.yml`
 Default | No
 Git: Remote URL | `https://github.com/remla23-team08/model-training.git`
-Git: Commit     | `be98a5f0138ff205a06241261f33686bd37a8834`
-Git: Branch     | `fixture_fix`
+Git: Commit     | `e5d4370a591e8031d7bb73e7d34d1252d2c1a89e`
+Git: Branch     | `tests`
 Git: Dirty Workspace?  | Yes
 Number of Python files | 12
 Lines of Python code   | 286
