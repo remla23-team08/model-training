@@ -4,6 +4,8 @@ stages:
     deps: 
     - .pylintrc
     - .mllint.yml
+    outs:
+    - reports/mllint_report.md
   load_data:
     cmd: python src/load_data.py
     deps:
@@ -43,3 +45,6 @@ stages:
     - src/evaluation.py
     - data/models/c1_BoW_Sentiment_Model.pkl
     - data/models/c2_Classifier_Sentiment_Model
+    outs:
+    - reports/tests-report.xml
+    - reports/coverage-report.xml

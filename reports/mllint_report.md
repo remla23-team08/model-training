@@ -1,16 +1,16 @@
 # ML Project Report
 **Project** | **Details**
 --------|--------
-Date    | Tue, 27 Jun 2023 15:29:22 +0200 
+Date    | Wed, 28 Jun 2023 16:19:14 +0200 
 Path    | `/home/jvandersaag/Documents/REMLA/project/model-training`
 Config  | `.mllint.yml`
 Default | No
 Git: Remote URL | `https://github.com/remla23-team08/model-training.git`
-Git: Commit     | `be98a5f0138ff205a06241261f33686bd37a8834`
-Git: Branch     | `fixture_fix`
+Git: Commit     | `cdfc27cd65f7ae5c25bc4dd126b42d72db7a2d56`
+Git: Branch     | `tests`
 Git: Dirty Workspace?  | Yes
-Number of Python files | 12
-Lines of Python code   | 286
+Number of Python files | 13
+Lines of Python code   | 340
 
 ---
 
@@ -41,20 +41,20 @@ Passed | Score | Weight | Rule | Slug
  | _Total_ | | | 
 ✅ | **100.0**% | | Dependency Management | `dependency-management`
 
-### Code Quality (`code-quality`) — **100.0**%
+### Code Quality (`code-quality`) — **99.6**%
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
 ✅ | 100.0% | 1 | Project should use code quality linters | `code-quality/use-linters`
 ✅ | 100.0% | 1 | All code quality linters should be installed in the current environment | `code-quality/linters-installed`
-✅ | 100.0% | 1 | Pylint reports no issues with this project | `code-quality/pylint/no-issues`
+❌ | 97.1% | 1 | Pylint reports no issues with this project | `code-quality/pylint/no-issues`
 ✅ | 100.0% | 1 | Pylint is configured for this project | `code-quality/pylint/is-configured`
 ✅ | 100.0% | 1 | Black reports no issues with this project | `code-quality/black/no-issues`
 ✅ | 100.0% | 1 | isort reports no issues with this project | `code-quality/isort/no-issues`
 ✅ | 100.0% | 0 | isort is properly configured | `code-quality/isort/is-configured`
 ✅ | 100.0% | 1 | Bandit reports no issues with this project | `code-quality/bandit/no-issues`
  | _Total_ | | | 
-✅ | **100.0**% | | Code Quality | `code-quality`
+❌ | **99.6**% | | Code Quality | `code-quality`
 
 #### Details — Project should use code quality linters — ✅
 
@@ -67,9 +67,27 @@ Hooray, all linters detected:
 - Bandit
 
 
-#### Details — Pylint reports no issues with this project — ✅
+#### Details — Pylint reports no issues with this project — ❌
 
-Congratulations, Pylint is happy with your project!
+Pylint reported **1** issues with your project:
+
+- `tests/test_MLintegration.py:1,0` - _(R0801)_ Similar lines in 2 files
+	```python
+	==evaluation:[63:74]
+	==src.evaluation:[26:38]
+	        "w",
+	        encoding="UTF-8",
+	    ) as f:
+	        json.dump(metric_json, f)
+	
+	    logging.info("Evaluation results saved to evaluation_results.json")
+	
+	    return acc_score, conf_matrix
+	
+	
+	if __name__ == "__main__":
+	```
+
 
 #### Details — Black reports no issues with this project — ✅
 
@@ -98,7 +116,7 @@ Passed | Score | Weight | Rule | Slug
 
 Great! Your project contains **4** test files, which meets the minimum of **1** test files required.
 
-This equates to **33.333333%** of Python files in your project being tests, which meets the target ratio of **20%**
+This equates to **30.769231%** of Python files in your project being tests, which meets the target ratio of **20%**
 
 #### Details — Project passes all of its automated tests — ✅
 
