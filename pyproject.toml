@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "model-training"
-version = "0.1.45"
+version = "0.1.46"
 description = "Contains the machine learning training codebase of temla23-team08."
 authors = ["remla23-team08"]
 readme = "README.md"
