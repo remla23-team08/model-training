@@ -43,10 +43,6 @@ stages:
       hash: md5
       md5: 243212bb05cce5e3fdc72bfd2826d329
       size: 31612
-    - path: src/preprocessing.py
-      hash: md5
-      md5: 1f0db9bb60d4c46c1624cbd1113d30cc
-      size: 2045
     - path: src/training.py
       hash: md5
       md5: 083eba40136b7b317088f064d03609d9
@@ -54,7 +50,7 @@ stages:
     outs:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
       hash: md5
-      md5: f42d23a20de5f7f59738b6e57e8f422f
+      md5: 976ceeeea124c4437c935dca378bab0f
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       hash: md5
@@ -74,10 +70,6 @@ stages:
   evaluation:
     cmd: python src/evaluation.py --output reports/model_evaluation.json
     deps:
-    - path: data/models/c1_BoW_Sentiment_Model.pkl
-      hash: md5
-      md5: f42d23a20de5f7f59738b6e57e8f422f
-      size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       hash: md5
       md5: eff43ff6860fc80715c02caed52e8fcf
@@ -86,10 +78,6 @@ stages:
       hash: md5
       md5: f7c6ce36fc81539069c1edd54256a67d
       size: 1619
-    - path: src/training.py
-      hash: md5
-      md5: 083eba40136b7b317088f064d03609d9
-      size: 2016
     outs:
     - path: reports/model_evaluation.json
       hash: md5
@@ -100,7 +88,7 @@ stages:
     deps:
     - path: data/models/c1_BoW_Sentiment_Model.pkl
       hash: md5
-      md5: f42d23a20de5f7f59738b6e57e8f422f
+      md5: 976ceeeea124c4437c935dca378bab0f
       size: 39823
     - path: data/models/c2_Classifier_Sentiment_Model
       hash: md5
