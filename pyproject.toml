@@ -13,6 +13,7 @@ nltk = "^3.8.1"
 scikit-learn = "^1.2.2"
 setuptools = "^45.2.0"
 pandas = "^2.0.2"
+libpython = {git = "https://github.com/remla23-team08/libpython"}
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.11.2"
