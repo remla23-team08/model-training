@@ -1,16 +1,16 @@
 # ML Project Report
 **Project** | **Details**
 --------|--------
-Date    | Thu, 29 Jun 2023 17:00:24 +0200 
+Date    | Thu, 29 Jun 2023 18:16:21 +0200 
 Path    | `/home/jvandersaag/Documents/REMLA/project/model-training`
 Config  | `.mllint.yml`
 Default | No
 Git: Remote URL | `https://github.com/remla23-team08/model-training.git`
-Git: Commit     | `e5d4370a591e8031d7bb73e7d34d1252d2c1a89e`
+Git: Commit     | `ea0f94facfef56f13cacb60fea9979c0eb9296b8`
 Git: Branch     | `tests`
 Git: Dirty Workspace?  | Yes
 Number of Python files | 12
-Lines of Python code   | 286
+Lines of Python code   | 259
 
 ---
 
@@ -60,11 +60,11 @@ Passed | Score | Weight | Rule | Slug
 
 Hooray, all linters detected:
 
-- Pylint
 - Mypy
 - Black
 - isort
 - Bandit
+- Pylint
 
 
 #### Details — Pylint reports no issues with this project — ✅
@@ -83,16 +83,16 @@ Congratulations, `isort` is happy with your project!
 
 Congratulations, Bandit is happy with your project!
 
-### Testing (`testing`) — **83.2**%
+### Testing (`testing`) — **85.3**%
 
 Passed | Score | Weight | Rule | Slug
 :-----:|------:|-------:|------|-----
 ✅ | 100.0% | 1 | Project has automated tests | `testing/has-tests`
 ✅ | 100.0% | 1 | Project passes all of its automated tests | `testing/pass`
-❌ | 32.7% | 1 | Project provides a test coverage report | `testing/coverage`
+❌ | 41.2% | 1 | Project provides a test coverage report | `testing/coverage`
 ✅ | 100.0% | 1 | Tests should be placed in the tests folder | `testing/tests-folder`
  | _Total_ | | | 
-❌ | **83.2**% | | Testing | `testing`
+❌ | **85.3**% | | Testing | `testing`
 
 #### Details — Project has automated tests — ✅
 
@@ -106,7 +106,7 @@ Congratulations, all **9** tests in your project passed!
 
 #### Details — Project provides a test coverage report — ❌
 
-Your project's tests achieved **26.1%** line test coverage, but **80.0%** is the target amount of test coverage to beat. You'll need to further improve your tests.
+Your project's tests achieved **33.0%** line test coverage, but **80.0%** is the target amount of test coverage to beat. You'll need to further improve your tests.
 
 ### Continuous Integration (`ci`) — **100.0**%
 
